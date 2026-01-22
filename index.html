@@ -3,84 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gustavo Ponce | Portal Executivo</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>Gustavo Ponce | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <div id="market-ticker" class="ticker-bar">
-        <span>Carregando mercado...</span>
-    </div>
+    <nav class="navbar" id="main-nav"></nav>
 
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">GP<span>.Finance</span></a>
-            <nav>
-                <button onclick="showSection('home')" class="nav-btn active">Dashboard</button>
-                <button onclick="showSection('ti')" class="nav-btn">Tech Portfolio</button>
-                <button onclick="showSection('financas')" class="nav-btn">Asset Management</button>
-            </nav>
-        </div>
-    </header>
+    <main id="app" class="app-container">
+        </main>
 
-    <main class="container">
-        
-        <section id="home" class="view active-view">
-            <div class="hero-card">
-                <h1 id="user-name">Carregando...</h1>
-                <h2 id="user-role">...</h2>
-                <div class="stats-row">
-                    <div class="stat-box">
-                        <span class="label">Meta Principal</span>
-                        <span class="value">CPA-20</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="label">Status Profissional</span>
-                        <span class="value">Jovem Aprendiz @ CIEE</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="label">Foco Acadêmico</span>
-                        <span class="value">IFPR + Finanças</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="ti" class="view hidden-view">
-            <div class="section-header">
-                <h2>Engenharia de Software</h2>
-                <p>Soluções desenvolvidas com foco em escalabilidade e negócio.</p>
-            </div>
-            <div id="projects-grid" class="grid-card">
-                </div>
-        </section>
-
-        <section id="financas" class="view hidden-view">
-            <div class="finance-dashboard">
-                <div class="col-left">
-                    <h2>Alocação Estratégica</h2>
-                    <p>Minha tese de investimentos baseada no ciclo atual de juros.</p>
-                    <div class="chart-container">
-                        <canvas id="myPortfolioChart"></canvas>
-                    </div>
-                </div>
-                <div class="col-right">
-                    <h3>Certificações & Roadmap</h3>
-                    <ul class="roadmap-list">
-                        <li class="done">Introdução ao Mercado (Feito)</li>
-                        <li class="active">CPA-20 (Em andamento)</li>
-                        <li>CEA (Planejado 2027)</li>
-                        <li>CFP® (Longo Prazo)</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <script src="js/finance.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
