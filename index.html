@@ -2,45 +2,85 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Portal Gustavo Ponce</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gustavo Ponce | Portal Executivo</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <header>
-        <a href="index.html" class="logo">GP. Portal</a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="ti/index.html">Projetos TI</a></li>
-                <li><a href="financas/index.html">Finanças & Carteira</a></li>
-                <li><a href="blog/index.html">Blog & Estudos</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container">
-        <h1>Bem-vindo ao meu Hub Profissional</h1>
-        <p>Aqui convergem tecnologia e gestão financeira.</p>
-        
-        <div class="grid-cards">
-            <div class="card">
-                <h3>👨‍💻 Desenvolvimento</h3>
-                <p>Veja meus sistemas web, integrações e soluções para clientes reais.</p>
-                <a href="ti/index.html" class="btn-ler">Acessar Projetos TI →</a>
-            </div>
-            <div class="card">
-                <h3>📈 Investimentos</h3>
-                <p>Minha tese de investimentos, certificações em andamento e carteira teórica.</p>
-                <a href="financas/index.html" class="btn-ler">Ver Análises →</a>
-            </div>
-            <div class="card">
-                <h3>📚 Knowledge Base</h3>
-                <p>Artigos sobre o que estou estudando: Mercado, Código e Economia.</p>
-                <a href="blog/index.html" class="btn-ler">Ler Blog →</a>
-            </div>
-        </div>
+    <div id="market-ticker" class="ticker-bar">
+        <span>Carregando mercado...</span>
     </div>
 
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">GP<span>.Finance</span></a>
+            <nav>
+                <button onclick="showSection('home')" class="nav-btn active">Dashboard</button>
+                <button onclick="showSection('ti')" class="nav-btn">Tech Portfolio</button>
+                <button onclick="showSection('financas')" class="nav-btn">Asset Management</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section id="home" class="view active-view">
+            <div class="hero-card">
+                <h1 id="user-name">Carregando...</h1>
+                <h2 id="user-role">...</h2>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <span class="label">Meta Principal</span>
+                        <span class="value">CPA-20</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="label">Status Profissional</span>
+                        <span class="value">Jovem Aprendiz @ CIEE</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="label">Foco Acadêmico</span>
+                        <span class="value">IFPR + Finanças</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ti" class="view hidden-view">
+            <div class="section-header">
+                <h2>Engenharia de Software</h2>
+                <p>Soluções desenvolvidas com foco em escalabilidade e negócio.</p>
+            </div>
+            <div id="projects-grid" class="grid-card">
+                </div>
+        </section>
+
+        <section id="financas" class="view hidden-view">
+            <div class="finance-dashboard">
+                <div class="col-left">
+                    <h2>Alocação Estratégica</h2>
+                    <p>Minha tese de investimentos baseada no ciclo atual de juros.</p>
+                    <div class="chart-container">
+                        <canvas id="myPortfolioChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-right">
+                    <h3>Certificações & Roadmap</h3>
+                    <ul class="roadmap-list">
+                        <li class="done">Introdução ao Mercado (Feito)</li>
+                        <li class="active">CPA-20 (Em andamento)</li>
+                        <li>CEA (Planejado 2027)</li>
+                        <li>CFP® (Longo Prazo)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/finance.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
