@@ -6,344 +6,357 @@
     <title>Gustavo Ponce | Futuro Especialista</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
     <script src="https://unpkg.com/feather-icons"></script>
 
     <style>
-        /* --- 1. VARIÁVEIS & ANIMAÇÕES --- */
+        /* --- 1. VARIÁVEIS T2 STYLE --- */
         :root {
-            --bg-body: #FAFAFA;
-            --bg-card: #FFFFFF;
-            --text-main: #111827;
-            --text-muted: #6B7280;
-            --primary: #0f172a;
-            --accent: #2563EB;
+            /* Paleta T2 Inspirada */
+            --t2-blue: #003366;       /* Azul Escuro Institucional */
+            --t2-light-blue: #0055AA; /* Azul Botão/Hover */
+            --t2-green: #28a745;      /* Verde Ação (Compra) */
+            --t2-gray: #f8f9fa;       /* Fundo Seções */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
             
-            /* Cores ANBIMA 3D */
-            --cpa-face: #84cc16; --cpa-side: #4d7c0f;
-            --cpror-face: #1d4ed8; --cpror-side: #1e3a8a;
-            --cproi-face: #f97316; --cproi-side: #c2410c;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
 
-            --radius: 24px;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
-            --font-stack: 'Inter', -apple-system, sans-serif;
-        }
-
-        /* Animação de Entrada (Scroll Reveal) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            --radius: 8px; /* Cantos levemente arredondados, não redondos */
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: var(--font-stack);
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--t2-gray);
             line-height: 1.6;
-            overflow-x: hidden;
         }
+
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(--t2-blue); }
 
         /* --- 2. HEADER --- */
-        nav {
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(250, 250, 250, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 20px 0;
+            padding: 15px 0;
+        }
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--t2-blue); text-decoration: none; text-transform: uppercase; letter-spacing: -1px; }
+        .logo span { color: var(--t2-light-blue); }
+
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; font-family: var(--font-heading); }
+        .nav-links a:hover { color: var(--t2-light-blue); }
+
+        .btn-login {
+            border: 2px solid var(--t2-blue); color: var(--t2-blue);
+            padding: 8px 24px; border-radius: var(--radius); text-decoration: none;
+            font-weight: 700; font-family: var(--font-heading); transition: 0.3s;
+        }
+        .btn-login:hover { background: var(--t2-blue); color: white; }
+
+        /* --- 3. HERO SECTION (Estilo Capa T2) --- */
+        .hero {
+            background-color: var(--t2-blue);
+            color: white;
+            padding: 160px 0 100px 0;
+            text-align: center;
+            background-image: linear-gradient(135deg, #003366 0%, #004080 100%);
+        }
+        .hero h1 { color: white; font-size: 3rem; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .hero p { font-size: 1.2rem; color: rgba(255,255,255,0.9); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        
+        .hero-btns { display: flex; gap: 20px; justify-content: center; }
+        .btn-primary {
+            background: var(--t2-green); color: white;
+            padding: 15px 40px; border-radius: var(--radius);
+            text-decoration: none; font-weight: 800; font-size: 1rem;
+            text-transform: uppercase; font-family: var(--font-heading);
+            box-shadow: 0 4px 0 #1e7e34; transition: 0.2s;
+        }
+        .btn-primary:hover { transform: translateY(2px); box-shadow: 0 2px 0 #1e7e34; }
+        
+        .btn-outline-white {
+            border: 2px solid white; color: white;
+            padding: 13px 40px; border-radius: var(--radius);
+            text-decoration: none; font-weight: 700; font-family: var(--font-heading);
             transition: 0.3s;
         }
-        .nav-container {
-            max-width: 1100px; margin: 0 auto; padding: 0 24px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; color: var(--primary); text-decoration: none; }
-        .nav-links { display: flex; gap: 32px; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: 0.2s; position: relative; }
-        .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
-            background-color: var(--accent); transition: width 0.3s;
-        }
-        .nav-links a:hover::after { width: 100%; }
-        
-        .cta-button {
-            background: var(--text-main); color: white; padding: 12px 24px;
-            border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
-            transition: transform 0.2s;
-        }
-        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .btn-outline-white:hover { background: white; color: var(--t2-blue); }
 
-        /* --- 3. HERO --- */
-        .hero { padding: 180px 0 100px 0; text-align: center; max-width: 800px; margin: 0 auto; }
-        .badge {
-            display: inline-block; background: #E0F2FE; color: #0284C7;
-            padding: 6px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px;
-            animation: float 3s ease-in-out infinite;
+        /* --- 4. CARDS GRID (Estilo Cursos T2) --- */
+        .section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.2rem; margin-bottom: 10px; }
+        .section-title p { color: var(--text-light); }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        
+        /* O Card T2 */
+        .card-t2 {
+            background: white; border-radius: var(--radius);
+            box-shadow: var(--shadow); overflow: hidden;
+            display: flex; flex-direction: column;
+            transition: transform 0.3s; border-bottom: 4px solid var(--t2-blue);
         }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
-        
-        .hero h1 { font-size: 4rem; line-height: 1.1; font-weight: 800; letter-spacing: -2px; color: var(--text-main); margin-bottom: 24px; }
-        .hero p { font-size: 1.25rem; color: var(--text-muted); line-height: 1.6; max-width: 600px; margin: 0 auto 40px auto; }
+        .card-t2:hover { transform: translateY(-5px); }
 
-        /* --- 4. GRID --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        .section { padding: 100px 0; }
-        .section-title { margin-bottom: 80px; text-align: center; }
-        .section-title h2 { font-size: 2.5rem; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px; }
-        .section-title p { color: var(--text-muted); font-size: 1.1rem; }
-        
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-
-        /* --- 5. LOGOS ANBIMA 3D (CSS PURO) --- */
-        /* Isso recria o cubo da ANBIMA sem precisar de imagem */
-        .anbima-cube {
-            width: 80px; height: 80px; margin: 0 auto 30px auto;
-            position: relative; perspective: 1000px;
-            transform-style: preserve-3d;
-            transform: rotateX(-15deg) rotateY(25deg);
-            transition: transform 0.5s ease;
+        .card-header {
+            background: var(--t2-blue); color: white; padding: 20px; text-align: center;
         }
-        .cert-card:hover .anbima-cube { transform: rotateX(-5deg) rotateY(45deg) scale(1.1); }
-        
-        .face { position: absolute; width: 100%; height: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-        .face-front { transform: translateZ(20px); }
-        .face-side { width: 40px; transform: rotateY(90deg) translateZ(60px); }
-        
-        /* Cores Específicas */
-        .cube-cpa .face-front { background: var(--cpa-face); }
-        .cube-cpa .face-side { background: var(--cpa-side); }
-        
-        .cube-cpror .face-front { background: var(--cpror-face); }
-        .cube-cpror .face-side { background: var(--cpror-side); }
-        
-        .cube-cproi .face-front { background: var(--cproi-face); }
-        .cube-cproi .face-side { background: var(--cproi-side); }
+        .card-header h3 { color: white; font-size: 1.2rem; margin: 0; }
+        .card-header .tag { font-size: 0.8rem; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 20px; margin-bottom: 10px; display: inline-block; }
 
-        .cert-card {
-            background: var(--bg-card); border-radius: var(--radius); padding: 50px 30px;
-            text-align: center; box-shadow: var(--shadow-sm); transition: all 0.3s ease;
-            position: relative; overflow: hidden; opacity: 0.6; filter: grayscale(100%);
+        .card-body { padding: 30px; flex-grow: 1; text-align: center; }
+        .card-list { list-style: none; margin-bottom: 30px; text-align: left; }
+        .card-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-light); display: flex; align-items: center; gap: 10px; }
+        .card-list li i { color: var(--t2-green); }
+
+        .card-price { margin-bottom: 20px; }
+        .card-price small { display: block; color: var(--text-light); font-size: 0.9rem; }
+        .card-price strong { font-size: 1.5rem; color: var(--t2-blue); font-weight: 800; }
+
+        .btn-card {
+            display: block; width: 100%; background: var(--t2-blue); color: white;
+            padding: 15px; text-align: center; text-decoration: none; font-weight: 700;
+            text-transform: uppercase; transition: 0.3s; border-radius: 4px;
         }
-        .cert-card:hover { opacity: 1; filter: grayscale(0%); transform: translateY(-10px); box-shadow: var(--shadow-hover); }
-        .cert-active { opacity: 1; filter: grayscale(0%); border: 2px solid var(--cpa-face); }
+        .btn-card:hover { background: var(--t2-light-blue); }
 
-        /* --- 6. ARTIGOS (GRID MODERNO) --- */
-        .article-card {
-            background: var(--bg-card); border-radius: 16px; padding: 30px;
-            box-shadow: var(--shadow-sm); transition: 0.3s; cursor: pointer;
-            display: flex; flex-direction: column; justify-content: space-between;
-            height: 100%; border: 1px solid transparent;
-        }
-        .article-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .article-cat { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
-        .article-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; line-height: 1.3; }
-        .article-excerpt { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
-        .article-meta { font-size: 0.85rem; color: #9CA3AF; display: flex; align-items: center; gap: 6px; }
+        /* --- 5. FERRAMENTAS (Clean) --- */
+        .tools-wrapper { background: white; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); border-left: 5px solid var(--t2-green); }
+        .input-group label { display: block; font-weight: 700; color: var(--t2-blue); margin-bottom: 8px; font-size: 0.9rem; }
+        .input-field { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; margin-bottom: 20px; }
+        .btn-tool { background: var(--t2-green); color: white; border: none; padding: 15px; width: 100%; font-weight: 700; cursor: pointer; border-radius: 4px; text-transform: uppercase; }
+        .btn-tool:hover { background: #218838; }
+        .result-box { margin-top: 20px; padding: 20px; background: #f0fdf4; border: 1px solid #c3e6cb; border-radius: 4px; display: none; }
 
-        /* --- 7. FOOTER --- */
-        footer { background: var(--primary); color: white; padding: 100px 0; margin-top: 100px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
-        .footer-brand h2 { font-size: 1.5rem; letter-spacing: -0.5px; margin-bottom: 16px; }
-        .footer-links li { list-style: none; margin-bottom: 12px; }
-        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
+        /* --- 6. FOOTER --- */
+        footer { background: #1a1a1a; color: white; padding: 60px 0; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+        .footer-brand h4 { color: white; margin-bottom: 20px; }
+        .footer-brand p { color: #999; font-size: 0.9rem; }
+        .footer-links h5 { color: white; margin-bottom: 20px; font-weight: 700; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
         .footer-links a:hover { color: white; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .grid-3, .grid-2, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .hero-btns { flex-direction: column; }
             .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">GP.Finance</a>
-            <div class="nav-links">
-                <a href="#roadmap">Roadmap</a>
-                <a href="#artigos">Knowledge Base</a>
-                <a href="#tools">Ferramentas</a>
-            </div>
-            <a href="mailto:contato@gustavoponce.com" class="cta-button">Fale Comigo</a>
+    <header>
+        <div class="container nav-flex">
+            <a href="#" class="logo">GP<span>.Finance</span></a>
+            <ul class="nav-links">
+                <li><a href="#certificacoes">Certificações</a></li>
+                <li><a href="#simuladores">Simuladores</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+            </ul>
+            <a href="mailto:contato@gustavoponce.com" class="btn-login">FALE COMIGO</a>
         </div>
-    </nav>
+    </header>
 
-    <section class="hero reveal">
+    <section class="hero">
         <div class="container">
-            <span class="badge">Jovem Aprendiz & Dev</span>
-            <h1>Tecnologia Bancária com Estratégia.</h1>
-            <p>16 Anos. Estudante do IFPR. Focado em dominar a nova trilha de certificações ANBIMA (C-Pro) e unir a programação ao mercado financeiro.</p>
-            <div style="display: flex; gap: 16px; justify-content: center;">
-                <a href="#tools" class="cta-button" style="background: var(--accent);">Testar Ferramentas</a>
-                <a href="#artigos" class="cta-button" style="background: white; color: var(--text-main); border: 1px solid #E5E7EB;">Ler Meus Artigos</a>
+            <h1>Domine a Nova Era Bancária</h1>
+            <p>16 Anos. Jovem Aprendiz e Desenvolvedor. Preparando-me para a certificação ANBIMA C-Pro com tecnologia de ponta.</p>
+            <div class="hero-btns">
+                <a href="#simuladores" class="btn-primary">TESTAR FERRAMENTAS</a>
+                <a href="#certificacoes" class="btn-outline-white">VER ROADMAP</a>
             </div>
         </div>
     </section>
 
-    <section id="roadmap" class="section">
+    <section id="certificacoes" class="section">
         <div class="container">
-            <div class="section-title reveal">
-                <h2>Roadmap de Competência</h2>
-                <p>A nova trilha da ANBIMA exige especialização. Este é meu plano.</p>
+            <div class="section-title">
+                <h2>Roadmap de Carreira</h2>
+                <p>A trilha oficial da ANBIMA para se tornar um Especialista.</p>
             </div>
             
             <div class="grid-3">
-                <div class="cert-card cert-active reveal">
-                    <div class="anbima-cube cube-cpa">
-                        <div class="face face-front">CPA</div>
-                        <div class="face face-side"></div>
+                <div class="card-t2">
+                    <div class="card-header" style="background: #28a745;"> <span class="tag">EM ANDAMENTO</span>
+                        <h3>Nova CPA</h3>
                     </div>
-                    <h3>Nova CPA</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">A Base Obrigatória.<br><strong>Status: Estudando</strong></p>
+                    <div class="card-body">
+                        <ul class="card-list">
+                            <li><i data-feather="check"></i> Base do Mercado</li>
+                            <li><i data-feather="check"></i> Sistema Financeiro</li>
+                            <li><i data-feather="check"></i> Ética e Regulação</li>
+                        </ul>
+                        <div class="card-price">
+                            <small>Status Atual:</small>
+                            <strong>Estudando</strong>
+                        </div>
+                        <a href="#" class="btn-card" style="background: #28a745;">Ver Conteúdo</a>
+                    </div>
                 </div>
 
-                <div class="cert-card reveal">
-                    <div class="anbima-cube cube-cpror">
-                        <div class="face face-front">R</div>
-                        <div class="face face-side"></div>
+                <div class="card-t2">
+                    <div class="card-header"> <span class="tag">META 2026</span>
+                        <h3>C-Pro Relacionamento</h3>
                     </div>
-                    <h3>C-Pro Relacionamento</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Especialização Comercial.<br><strong>Status: Meta 2026</strong></p>
+                    <div class="card-body">
+                        <ul class="card-list">
+                            <li><i data-feather="lock"></i> Venda Consultiva</li>
+                            <li><i data-feather="lock"></i> Produtos de Varejo</li>
+                            <li><i data-feather="lock"></i> Suitability</li>
+                        </ul>
+                        <div class="card-price">
+                            <small>Próximo Passo:</small>
+                            <strong>Especialização</strong>
+                        </div>
+                        <a href="#" class="btn-card">Em Breve</a>
+                    </div>
                 </div>
 
-                <div class="cert-card reveal">
-                    <div class="anbima-cube cube-cproi">
-                        <div class="face face-front">I</div>
-                        <div class="face face-side"></div>
+                <div class="card-t2">
+                    <div class="card-header" style="background: #fd7e14;"> <span class="tag">LONGO PRAZO</span>
+                        <h3>C-Pro Investimento</h3>
                     </div>
-                    <h3>C-Pro Investimento</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Especialização Técnica.<br><strong>Status: Longo Prazo</strong></p>
+                    <div class="card-body">
+                        <ul class="card-list">
+                            <li><i data-feather="lock"></i> Alocação de Ativos</li>
+                            <li><i data-feather="lock"></i> Gestão de Risco</li>
+                            <li><i data-feather="lock"></i> Derivativos</li>
+                        </ul>
+                        <div class="card-price">
+                            <small>Objetivo Final:</small>
+                            <strong>Autoridade</strong>
+                        </div>
+                        <a href="#" class="btn-card" style="background: #fd7e14;">Futuro</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="artigos" class="section" style="background: #FFFFFF;">
+    <section id="simuladores" class="section" style="background: white;">
         <div class="container">
-            <div class="section-title reveal">
-                <h2>Knowledge Base</h2>
-                <p>Pesquisas sobre produtos, regulação e economia.</p>
-            </div>
-
-            <div class="grid-3" id="articles-container">
-                </div>
-
-            <div style="text-align: center; margin-top: 60px;">
-                <button class="cta-button reveal" style="background: transparent; border: 1px solid #E5E7EB; color: var(--text-muted);">Carregar Mais (+42 Artigos)</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="tools" class="section">
-        <div class="container">
-            <div class="section-title reveal">
+            <div class="section-title">
                 <h2>Simulador de Decisão</h2>
-                <p>Ferramenta desenvolvida para demonstrar venda consultiva.</p>
+                <p>Ferramenta desenvolvida para consultoria financeira prática.</p>
             </div>
-
-            <div class="grid-2">
-                <div class="calc-wrapper reveal" style="background: white; padding: 40px; border-radius: 24px; box-shadow: var(--shadow-sm);">
-                    <h3 style="margin-bottom: 20px;">Consórcio vs. Financiamento</h3>
-                    <div style="margin-bottom: 20px;">
-                        <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:5px;">VALOR DO BEM</label>
-                        <input type="number" id="valorBem" value="50000" style="width:100%; padding:15px; border-radius:12px; border:1px solid #E5E7EB; font-size:1rem;">
+            
+            <div class="grid-3" style="grid-template-columns: 2fr 1fr;">
+                <div class="tools-wrapper">
+                    <h3 style="margin-bottom: 20px; color: var(--t2-blue);">Consórcio vs. Financiamento</h3>
+                    <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="input-group">
+                            <label>Valor do Bem (R$)</label>
+                            <input type="number" id="valorBem" class="input-field" value="50000">
+                        </div>
+                        <div class="input-group">
+                            <label>Prazo (Meses)</label>
+                            <input type="number" id="prazoMeses" class="input-field" value="60">
+                        </div>
                     </div>
-                    <div style="margin-bottom: 20px;">
-                        <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:5px;">PRAZO (MESES)</label>
-                        <input type="number" id="prazoMeses" value="60" style="width:100%; padding:15px; border-radius:12px; border:1px solid #E5E7EB; font-size:1rem;">
-                    </div>
-                    <button onclick="calcConsorcio()" style="width:100%; padding:15px; background:var(--primary); color:white; border:none; border-radius:12px; font-weight:600; cursor:pointer;">Calcular Economia</button>
-                    <div id="resConsorcio" style="margin-top:20px; padding:20px; background:#F8FAFC; border-radius:12px; text-align:center; display:none;"></div>
+                    <button class="btn-tool" onclick="calcConsorcio()">CALCULAR ECONOMIA</button>
+                    <div id="resConsorcio" class="result-box"></div>
                 </div>
 
-                <div class="reveal" style="display:flex; flex-direction:column; justify-content:center;">
-                    <h3 style="font-size:2rem; margin-bottom:20px;">Por que eu criei isso?</h3>
-                    <p style="color:var(--text-muted); margin-bottom:20px;">
-                        Como Jovem Aprendiz e futuro C-Pro R, entendo que o cliente precisa ver valor. 
+                <div style="padding: 20px;">
+                    <h3 style="margin-bottom: 15px;">Por que esta ferramenta?</h3>
+                    <p style="margin-bottom: 15px; color: #666;">
+                        No modelo da T2 e da ANBIMA, o profissional precisa provar valor.
                     </p>
-                    <p style="color:var(--text-muted);">
-                        Este script em JavaScript não é apenas código; é um argumento de venda tangível que prova a eficiência da Taxa de Administração sobre os Juros Compostos.
+                    <p style="color: #666;">
+                        Criei este script para demonstrar matematicamente como a Taxa de Administração (fixa) vence os Juros Compostos (exponenciais) em prazos longos.
                     </p>
+                    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <i data-feather="code" style="color: var(--t2-blue);"></i>
+                        <small>Desenvolvido em JavaScript Puro</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projetos Tecnológicos</h2>
+                <p>Soluções práticas para problemas reais.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card-t2" style="border-bottom: 4px solid #333;">
+                    <div class="card-body" style="text-align: left;">
+                        <h3 style="margin-bottom: 10px; color: #333;">Thimanni SaaS</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+                            Sistema de gestão de recebíveis para autônomos. Organiza fluxo de caixa e reduz inadimplência.
+                        </p>
+                        <a href="#" style="color: var(--t2-blue); font-weight: 700; text-decoration: none;">Ver Case &rarr;</a>
+                    </div>
+                </div>
+                <div class="card-t2" style="border-bottom: 4px solid #333;">
+                    <div class="card-body" style="text-align: left;">
+                        <h3 style="margin-bottom: 10px; color: #333;">Nexus BI</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+                            Dashboard de inteligência comercial. Rastreia leads e calcula custo de aquisição (CAC).
+                        </p>
+                        <a href="#" style="color: var(--t2-blue); font-weight: 700; text-decoration: none;">Ver Case &rarr;</a>
+                    </div>
+                </div>
+                <div class="card-t2" style="border-bottom: 4px solid #333;">
+                    <div class="card-body" style="text-align: left;">
+                        <h3 style="margin-bottom: 10px; color: #333;">Validador LCI</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+                            Algoritmo Python que compara rentabilidade líquida entre isentos e tributados.
+                        </p>
+                        <a href="#" style="color: var(--t2-blue); font-weight: 700; text-decoration: none;">Ver Case &rarr;</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h2>Gustavo Ponce.</h2>
-                    <p>Unindo Lógica de Programação e Estratégia Financeira.</p>
-                    <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026. Telêmaco Borba - PR.</p>
-                </div>
-                <div class="footer-col">
-                    <h3 style="color:rgba(255,255,255,0.4); font-size:0.8rem; text-transform:uppercase; margin-bottom:20px;">Menu</h3>
-                    <ul class="footer-links">
-                        <li><a href="#roadmap">Roadmap</a></li>
-                        <li><a href="#artigos">Knowledge Base</a></li>
-                        <li><a href="#tools">Ferramentas</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3 style="color:rgba(255,255,255,0.4); font-size:0.8rem; text-transform:uppercase; margin-bottom:20px;">Social</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">GitHub</a></li>
-                        <li><a href="mailto:contato@gustavoponce.com">Email</a></li>
-                    </ul>
-                </div>
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h4>GP.FINANCE</h4>
+                <p>Unindo Lógica de Programação e Estratégia Financeira para a nova era bancária.</p>
+                <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2026. Todos os direitos reservados.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Navegação</h5>
+                <ul>
+                    <li><a href="#certificacoes">Roadmap ANBIMA</a></li>
+                    <li><a href="#simuladores">Simuladores</a></li>
+                    <li><a href="#projetos">Projetos Tech</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Social</h5>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="mailto:contato@gustavoponce.com">Email</a></li>
+                </ul>
             </div>
         </div>
     </footer>
 
     <script>
-        // 1. ANIMAÇÃO SCROLL REVEAL
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Chama uma vez pra carregar o topo
-
-        // 2. BANCO DE DADOS DE ARTIGOS (FAKE)
-        const articles = [
-            { cat: "Matemática Financeira", title: "A Matemática Oculta do Consórcio", desc: "Por que a taxa de administração vence os juros compostos em cenários de Selic alta.", date: "24 Jan 2026" },
-            { cat: "Renda Fixa", title: "Marcação a Mercado na Prática", desc: "Entenda por que seu título IPCA+ pode estar negativo hoje e como usar isso a seu favor.", date: "20 Jan 2026" },
-            { cat: "Regulação", title: "O Impacto da C-Pro no Varejo", desc: "Como a nova estrutura da ANBIMA muda o perfil de contratação dos grandes bancos.", date: "15 Jan 2026" }
-        ];
-
-        // Renderiza Artigos
-        const artContainer = document.getElementById('articles-container');
-        articles.forEach(art => {
-            artContainer.innerHTML += `
-                <div class="article-card reveal">
-                    <div class="article-cat">${art.cat}</div>
-                    <div class="article-title">${art.title}</div>
-                    <div class="article-excerpt">${art.desc}</div>
-                    <div class="article-meta"><i data-feather="clock" style="width:14px"></i> ${art.date}</div>
-                </div>
-            `;
-        });
-
-        // 3. CÁLCULO CONSÓRCIO
         function calcConsorcio() {
             const v = parseFloat(document.getElementById('valorBem').value);
             const m = parseInt(document.getElementById('prazoMeses').value);
@@ -354,15 +367,13 @@
             const res = document.getElementById('resConsorcio');
             res.style.display = 'block';
             res.innerHTML = `
-                <div style="font-size:0.9rem; color:#6B7280; margin-bottom:10px;">Economia Gerada:</div>
-                <div style="font-size:2rem; font-weight:800; color:#166534; line-height:1;">R$ ${Math.round(eco).toLocaleString('pt-BR')}</div>
-                <div style="font-size:0.8rem; margin-top:10px; color:#6B7280;">
-                    Financiamento: R$ ${Math.round(fin).toLocaleString('pt-BR')} <br>
-                    Consórcio: R$ ${Math.round(con).toLocaleString('pt-BR')}
+                <div style="font-size:0.9rem; color:#666; margin-bottom:5px;">Economia Gerada:</div>
+                <div style="font-size:2rem; font-weight:800; color:#28a745; line-height:1;">R$ ${Math.round(eco).toLocaleString('pt-BR')}</div>
+                <div style="font-size:0.8rem; margin-top:10px; color:#666;">
+                    Financiamento: R$ ${Math.round(fin).toLocaleString('pt-BR')} | Consórcio: R$ ${Math.round(con).toLocaleString('pt-BR')}
                 </div>
             `;
         }
-        
         feather.replace();
     </script>
 </body>
