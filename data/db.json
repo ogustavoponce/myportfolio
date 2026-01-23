@@ -1,66 +1,74 @@
 {
   "profile": {
     "name": "Gustavo Ponce",
-    "role": "Desenvolvedor & Analista Jr.",
-    "headline": "Soluções tecnológicas focadas em eficiência e gestão de dados.",
-    "about": "Profissional focado na intersecção entre Tecnologia e Finanças. Atuo no desenvolvimento de sistemas web para gestão, automação de processos e análise de dados para tomada de decisão estratégica.",
-    "location": "Paraná, Brasil",
+    "role": "Financial Software Developer",
+    "headline": "Arquitetando soluções onde a eficiência do Código encontra a liquidez do Capital.",
+    "about": "Profissional híbrido focado no setor bancário. Diferente de um dev comum, eu entendo de Juros e Amortização. Diferente de um bancário comum, eu sei automatizar processos com Python e JavaScript. Meu objetivo é eliminar ineficiências operacionais.",
+    "location": "Brasil • Remote & Presencial",
+    "status": "Open to Work",
     "social": {
-      "github": "#",
-      "linkedin": "#",
-      "email": "contato@gustavoponce.com"
+      "github": "github.com/gustavoponce",
+      "linkedin": "linkedin.com/in/gustavoponce",
+      "email": "business@gustavoponce.com"
     }
   },
   "finance": {
-    "thesis": "Apresentação de competência analítica baseada em leitura de cenário macroeconômico e alocação diversificada de ativos.",
-    "roadmap": [
-      { "year": "Foco Atual", "goal": "Certificações ANBIMA (CPA)", "status": "active" },
-      { "year": "Competência", "goal": "Análise de Produtos Bancários", "status": "active" },
-      { "year": "Competência", "goal": "Matemática Financeira", "status": "active" },
-      { "year": "Idioma", "goal": "Inglês Técnico", "status": "pending" }
-    ],
-    "allocation": {
-      "labels": ["Renda Fixa / Liquidez", "Fundos Imobiliários", "Renda Variável", "Reserva de Oportunidade"],
-      "data": [45, 25, 20, 10],
-      "colors": ["#0f172a", "#334155", "#475569", "#94a3b8"]
-    }
+    "thesis": "Estratégia Barbell: Proteção extrema em 80% do portfólio (Renda Fixa IPCA+ e High Grade) para permitir volatilidade agressiva nos 20% restantes (Small Caps e Tech).",
+    "macro_view": "Cenário de juros reais elevados (Selic > 10%) favorece acumulação em pós-fixados. Momento de cautela com Equity, focando apenas em setores perenes (Bancos/Elétricas).",
+    "portfolio": [
+      {
+        "asset": "Renda Fixa Soberana",
+        "ticker": "TD IPCA+ 2035",
+        "allocation": "45%",
+        "rationale": "Proteção contra inflação e garantia de juro real de 6% a.a. O alicerce da carteira."
+      },
+      {
+        "asset": "Fundos Imobiliários",
+        "ticker": "Carteira High Yield",
+        "allocation": "25%",
+        "rationale": "Geração de fluxo de caixa mensal isento de IR para reinvestimento (Juros Compostos)."
+      },
+      {
+        "asset": "Renda Variável",
+        "ticker": "Bancos & Utilities",
+        "allocation": "20%",
+        "rationale": "Exposição a dividendos e ganho de capital em empresas descontadas (P/L baixo)."
+      },
+      {
+        "asset": "Caixa / Liquidez",
+        "ticker": "CDB 100% CDI",
+        "allocation": "10%",
+        "rationale": "Munição para aproveitar quedas abruptas do mercado (Black Swans)."
+      }
+    ]
   },
   "tech": [
     {
       "id": 1,
-      "title": "Sistema de Gestão Thimanni",
-      "type": "SaaS / Web Application",
-      "techs": ["JavaScript", "Firebase", "UX/UI"],
-      "description": "Plataforma completa para administração de clientes e treinos personalizados. Foco em escalabilidade e experiência do usuário (Mobile First).",
-      "link": "#"
+      "title": "Thimanni Management System",
+      "category": "SaaS / Fintech",
+      "stack": ["JavaScript ES6", "Firebase Realtime", "Dashboard Analytics"],
+      "summary": "Sistema de gestão de assinaturas e pagamentos recorrentes.",
+      "details": "Desenvolvimento de uma plataforma completa para profissionais de saúde (Personal Trainers) gerenciarem fluxo de caixa e alunos. O sistema resolve o problema de inadimplência através de dashboards de cobrança.",
+      "financial_hook": "Automação de Recebíveis"
     },
     {
       "id": 2,
-      "title": "Portal Educacional",
-      "type": "EdTech",
-      "techs": ["HTML5 Semântico", "CSS Grid", "Interatividade"],
-      "description": "Desenvolvimento de ambiente virtual de aprendizado para suporte acadêmico, otimizando a distribuição de conteúdo didático.",
-      "link": "#"
+      "title": "Credit Score Simulator Logic",
+      "category": "Algoritmo Financeiro",
+      "stack": ["Python", "Pandas Logic", "Math Financeira"],
+      "summary": "Algoritmo de análise de risco e cálculo de juros.",
+      "details": "Script desenvolvido para simular a evolução de dívidas e investimentos com base na taxa Selic variável e inflação projetada. Utilizado para provar teses de investimento de longo prazo.",
+      "financial_hook": "Análise de Risco"
     },
     {
       "id": 3,
-      "title": "Nexus Business Intelligence",
-      "type": "Consultoria & Dados",
-      "techs": ["Análise de Dados", "Estratégia Comercial"],
-      "description": "Implementação de processos comerciais e estruturação de funil de vendas baseada em métricas de conversão.",
-      "link": "#"
-    }
-  ],
-  "blog": [
-    {
-      "date": "Jan 2026",
-      "title": "Análise: O impacto da Selic nos investimentos de Renda Fixa",
-      "preview": "Um estudo técnico sobre como a taxa de juros atual afeta a atratividade de títulos públicos e privados."
-    },
-    {
-      "date": "Jan 2026",
-      "title": "Tech: Por que bancos utilizam arquitetura de microsserviços",
-      "preview": "Entendendo a lógica por trás da modernização dos sistemas bancários atuais."
+      "title": "Nexus CRM & Funnel",
+      "category": "Business Intelligence",
+      "stack": ["Data Analysis", "Lead Tracking", "Automation"],
+      "summary": "Otimização de conversão de vendas baseada em dados.",
+      "details": "Implementação de lógica de CRM para agência digital, focando na métrica de CAC (Custo de Aquisição de Cliente) e LTV (Lifetime Value).",
+      "financial_hook": "Eficiência Operacional"
     }
   ]
 }
