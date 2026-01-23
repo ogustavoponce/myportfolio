@@ -2,10 +2,10 @@
   "profile": {
     "name": "Gustavo Ponce",
     "headline": "Onde a Tecnologia encontra a Eficiência Bancária.",
-    "subheadline": "16 Anos. Jovem Aprendiz. Desenvolvedor Fullstack. Preparando-me hoje para ser o Gerente que o mercado exigirá amanhã.",
-    "about": "Muitos veem a tecnologia e o mercado financeiro como mundos distintos. Eu vejo como uma coisa só. Enquanto curso Técnico em Informática no IFPR e atuo como Jovem Aprendiz, percebi uma lacuna no mercado: profissionais que entendem de vendas, mas travam na tecnologia; ou desenvolvedores que sabem codar, mas não entendem de juros e amortização. Minha missão é ser o híbrido. Estou tirando a CPA-20 para dominar os produtos, e uso Python/JS para dominar os dados. Este portfólio não é sobre o que eu sei fazer, é sobre os problemas que eu posso resolver.",
+    "subheadline": "16 Anos. Jovem Aprendiz. Desenvolvedor Fullstack. Focado na nova trilha de certificações por competência da ANBIMA.",
+    "about": "O mercado mudou. As certificações antigas (CPA-10/20) deram lugar às competências reais. Enquanto atuo no CIEE e estudo no IFPR, estou construindo minha base técnica para a Nova CPA, visando a especialização futura em Relacionamento (C-Pro R) e Investimento (C-Pro I). Minha missão é unir a oratória comercial com a precisão dos dados.",
     "location": "Brasil • Presencial & Remote",
-    "status": "Foco: CPA-20 & C_PRO",
+    "status": "Em preparação: Nova CPA",
     "social": {
       "github": "gustavoponce",
       "linkedin": "gustavoponce",
@@ -13,53 +13,53 @@
     }
   },
   "finance": {
-    "thesis": "Estratégia baseada em Ciclos Econômicos: Proteção de capital em momentos de juros altos (Renda Fixa) e exposição inteligente em ativos reais (Consórcios e FIIs) para alavancagem.",
-    "macro_view": "O cliente bancário mudou. Ele não quer apenas rentabilidade, ele quer entender a lógica do produto. Meu papel é traduzir 'Taxas' em 'Sonhos Realizáveis'.",
+    "thesis": "Estratégia Híbrida: Utilizar a tecnologia para personalizar o atendimento (C-Pro R) e a matemática para otimizar portfólios (C-Pro I).",
+    "macro_view": "Na nova era bancária, o gerente não é um vendedor de produtos, é um arquiteto de soluções financeiras. Meus simuladores provam essa tese.",
     "portfolio": [
       {
-        "asset": "Segurança",
-        "ticker": "Renda Fixa IPCA+",
-        "allocation": "50%",
-        "rationale": "Garantia de poder de compra no longo prazo."
+        "asset": "Base Técnica",
+        "ticker": "Nova CPA",
+        "allocation": "Prioridade 1",
+        "rationale": "Fundamentos de Economia, Sistema Financeiro e Ética. O pré-requisito obrigatório."
       },
       {
-        "asset": "Alavancagem",
-        "ticker": "Consórcio Estratégico",
-        "allocation": "30%",
-        "rationale": "Estratégia de alavancagem patrimonial inteligente e isenção fiscal."
+        "asset": "Carreira Comercial",
+        "ticker": "C-Pro R",
+        "allocation": "Meta Curto Prazo",
+        "rationale": "Foco em Relacionamento, Venda Consultiva e Adequação de Perfil (Suitability)."
       },
       {
-        "asset": "Dividendos",
-        "ticker": "Ações Perenes",
-        "allocation": "20%",
-        "rationale": "Sócios de grandes bancos e empresas de energia."
+        "asset": "Especialização",
+        "ticker": "C-Pro I",
+        "allocation": "Meta Longo Prazo",
+        "rationale": "Domínio de Alocação de Ativos, Risco e Derivativos. Onde a programação faz a diferença."
       }
     ]
   },
   "tech": [
     {
       "id": 1,
-      "title": "Sistema de Gestão de Recebíveis (SaaS)",
-      "category": "Fintech / Solução PJ",
-      "stack": ["JavaScript", "Firebase", "Automação"],
-      "details": "Muitos autônomos quebram por falta de gestão de caixa. Desenvolvi um sistema que centraliza o cadastro de clientes e monitora pagamentos, reduzindo a inadimplência através da organização visual.",
-      "hook": "Gestão de Fluxo de Caixa"
+      "title": "Simulador de Crédito & Consórcio",
+      "category": "Ferramenta C-Pro R",
+      "stack": ["JavaScript", "Matemática Financeira"],
+      "details": "Uma ferramenta de venda consultiva. Prova matematicamente ao cliente quando o Consórcio (Taxa Adm) vence o Financiamento (Juros Compostos).",
+      "hook": "Foco em Relacionamento"
     },
     {
       "id": 2,
-      "title": "Dashboard de Inteligência Comercial (BI)",
-      "category": "Business Intelligence",
-      "stack": ["Data Analysis", "KPIs", "CRM Logic"],
-      "details": "Vender sem dados é sorte. Na Nexus, implementei um painel que rastreia a origem dos leads, calculando o custo real de cada cliente (CAC), fundamental para qualquer agência bancária bater metas.",
-      "hook": "Decisão Baseada em Dados"
+      "title": "Thimanni: Gestão de Recebíveis",
+      "category": "Fintech / Solução PJ",
+      "stack": ["Firebase", "Dashboard Analytics"],
+      "details": "Sistema para organizar o fluxo de caixa de clientes PJ. Mostra visão de negócio para atender empresas.",
+      "hook": "Visão PJ"
     },
     {
       "id": 3,
-      "title": "Simulador de Crédito Bancário",
-      "category": "Algoritmo de Vendas",
-      "stack": ["Matemática Financeira", "Lógica de Vendas"],
-      "details": "Algoritmo desenvolvido para comparar o Custo Efetivo Total (CET) de financiamentos versus a taxa administrativa de consórcios. Uma ferramenta de venda consultiva.",
-      "hook": "Consultoria Automatizada"
+      "title": "Validador de Investimentos",
+      "category": "Ferramenta C-Pro I",
+      "stack": ["Python Logic", "Comparador de Taxas"],
+      "details": "Algoritmo que compara LCI/LCA com CDBs, descontando automaticamente o IR regressivo para encontrar a melhor rentabilidade líquida.",
+      "hook": "Análise Técnica"
     }
   ]
 }
