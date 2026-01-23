@@ -3,55 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gustavo Ponce | Future Banker</title>
-    
-    <link rel="stylesheet" href="css/style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Gustavo Ponce | Tech & Finance Authority</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="container top-bar-content">
-            <div class="market-data">
-                <span class="indicator">ANBIMA <strong>C_PRO Update</strong></span>
-                <span class="indicator">SELIC <strong>11.25%</strong></span>
-                <span class="indicator">IPCA <strong>4.50%</strong></span>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">GP<span class="dot">.</span>Authority</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Perfil</a></li>
+                <li><a href="#certs">Certificações</a></li>
+                <li><a href="#projects">Projetos TI</a></li>
+                <li><a href="#blog">Artigos Técnicos</a></li>
+            </ul>
+            <a href="mailto:contato@gustavoponce.com" class="btn-contact">Fale Comigo</a>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="badge">Jovem Aprendiz & Developer</span>
+                <h1>A Nova Geração do <br>Mercado Financeiro.</h1>
+                <p>Meu nome é <strong>Gustavo Ponce</strong>. Aos 16 anos, não estou apenas aprendendo a operar o sistema bancário; estou aprendendo a <em>construí-lo</em>. Uno a oratória comercial com a lógica de programação.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <strong>IFPR</strong>
+                        <span>Formação Técnica</span>
+                    </div>
+                    <div class="stat">
+                        <strong>ANBIMA</strong>
+                        <span>Em Certificação</span>
+                    </div>
+                    <div class="stat">
+                        <strong>FULLSTACK</strong>
+                        <span>JS & Python</span>
+                    </div>
+                </div>
             </div>
-            <div class="system-status">
-                <span class="dot"></span> System Operational
+            <div class="hero-image">
+                <div class="photo-placeholder">
+                    <img src="https://via.placeholder.com/400x500/1e3a8a/ffffff?text=FOTO+DO+GUSTAVO" alt="Gustavo Ponce">
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <header class="main-header">
-        <div class="container header-wrapper">
-            <a href="#" class="brand-logo" onclick="app.render('home'); return false;">
-                GP<span class="highlight">.</span>Finance
-            </a>
-            <nav class="nav-links">
-                <a href="#" class="nav-item active" data-target="home">Dashboard</a>
-                <a href="#" class="nav-item" data-target="tools">Simuladores</a>
-                <a href="#" class="nav-item" data-target="finance">Investimentos</a>
-                <a href="#" class="nav-item" data-target="tech">Projetos Tech</a>
-            </nav>
-            <div class="header-actions">
-                <a href="mailto:contato@gustavoponce.com" class="btn-contact">Fale Comigo</a>
+    <section id="certs" class="section-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Roadmap de Autoridade</h2>
+                <p>Minha jornada técnica para dominar as diretrizes da ANBIMA.</p>
             </div>
-            <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')">☰</button>
+            
+            <div class="certs-display">
+                <img src="assets/anbima-badges.png" alt="CPA, C-Pro R, C-Pro I" class="anbima-img">
+                
+                <div class="progress-bar-container">
+                    <div class="progress-info">
+                        <span>Status Atual: Estudando CPA-20</span>
+                        <span>35% Concluído</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main class="container" id="app-content">
-        </main>
+    <section id="projects" class="section-grey">
+        <div class="container">
+            <div class="section-header">
+                <h2>Engenharia Financeira</h2>
+                <p>Não apenas teoria. Ferramentas práticas que desenvolvi.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="icon-box"><i data-feather="grid"></i></div>
+                    <h3>HP-12C Web Emulator</h3>
+                    <p>Réplica funcional da calculadora financeira mais usada no mundo. Desenvolvida em JavaScript puro para cálculos de VPL e TIR.</p>
+                    <a href="#" class="link-arrow">Testar Ferramenta &rarr;</a>
+                </div>
+                <div class="project-card">
+                    <div class="icon-box"><i data-feather="home"></i></div>
+                    <h3>Simulador SAC vs PRICE</h3>
+                    <p>Algoritmo que compara sistemas de amortização imobiliária, mostrando a economia real de juros no longo prazo.</p>
+                    <a href="#" class="link-arrow">Ver Comparativo &rarr;</a>
+                </div>
+                <div class="project-card">
+                    <div class="icon-box"><i data-feather="trending-up"></i></div>
+                    <h3>Validador de Investimentos</h3>
+                    <p>Script Python que consome API do Banco Central para comparar rentabilidade líquida de LCI x CDB x Poupança.</p>
+                    <a href="#" class="link-arrow">Ver Código &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer id="app-footer">
-        </footer>
+    <section id="blog" class="section-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Knowledge Base</h2>
+                <p>Pesquisas e artigos técnicos sobre o mercado financeiro.</p>
+            </div>
+            
+            <div class="blog-grid" id="blog-container">
+                </div>
+            
+            <div class="center-btn">
+                <button class="btn-outline">Carregar Mais Artigos (+42)</button>
+            </div>
+        </div>
+    </section>
 
-    <script src="js/app.js"></script>
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <h3>Gustavo Ponce</h3>
+                <p>Futuro Especialista em Investimentos & Desenvolvedor.</p>
+            </div>
+            <div class="footer-right">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data/articles.js"></script> <script src="script.js"></script>
+    <script>feather.replace()</script>
 </body>
 </html>
