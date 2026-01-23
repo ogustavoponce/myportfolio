@@ -107,37 +107,58 @@ p { font-size: 1rem; color: var(--text-secondary); max-width: 600px; }
 .skeleton { background: linear-gradient(90deg, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-/* --- FOOTER (Full Width & Dark) --- */
+/* --- FOOTER (Minimalist System Bar) --- */
 footer {
     width: 100%;
-    background-color: var(--text-primary); /* MESMA COR DO TOPO */
-    color: rgba(255,255,255,0.8);
+    /* Mesma cor da Top Bar (Azul Escuro/Preto) */
+    background-color: var(--text-primary); 
+    color: rgba(255,255,255,0.6);
     border-top: 1px solid rgba(255,255,255,0.1);
-    padding: 80px 0 40px 0;
-    margin-top: auto; /* Empurra pro fundo */
+    
+    /* Tamanho Compacto (Minimalista) */
+    padding: 24px 0;
+    margin-top: auto;
+    font-size: 13px; /* Fonte menor */
 }
 
-/* O Grid dentro do footer deve respeitar a largura do site */
 .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center; /* Alinha tudo numa linha só */
 }
 
-footer h2, footer h3 { color: white !important; }
-footer p { color: rgba(255,255,255,0.6); }
-footer ul { list-style: none; line-height: 2.2; }
-footer a { color: rgba(255,255,255,0.8); text-decoration: none; transition: 0.2s; }
-footer a:hover { color: white; text-decoration: underline; }
+/* Marca no Rodapé */
+footer h2 { 
+    color: white !important; 
+    font-size: 15px; 
+    margin: 0; 
+    font-weight: 700; 
+    letter-spacing: -0.02em;
+}
 
-/* Responsive */
-@media (max-width: 900px) {
-    .bento-grid, .footer-container { display: flex; flex-direction: column; }
-    .nav-links, .header-actions { display: none; }
-    .mobile-menu-btn { display: block; }
-    .nav-links.show { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: white; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-    .top-bar { display: none; }
+/* Links em linha */
+.footer-links {
+    display: flex; gap: 24px;
+    list-style: none;
+    margin: 0; padding: 0;
+}
+
+footer a { 
+    color: rgba(255,255,255,0.6); 
+    text-decoration: none; 
+    transition: 0.2s; 
+    font-weight: 500;
+}
+footer a:hover { color: white; }
+
+/* Copyright discreto */
+.copyright {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    opacity: 0.5;
+}
+
+/* Mobile: Fica empilhado para caber */
+@media (max-width: 768px) {
+    .footer-container { flex-direction: column; gap: 15px; text-align: center; }
+    .footer-links { gap: 15px; font-size: 12px; }
 }

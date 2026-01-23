@@ -1,55 +1,70 @@
 const app = {
     data: null,
 
+    // Inicialização da Aplicação
     init: async () => {
+        // 1. Mostra o esqueleto de carregamento (Visual Técnico)
         app.renderSkeleton();
+        
+        // 2. Busca dados do mercado (Dólar/Euro)
         app.fetchMarketData();
 
+        // 3. Simula carregamento de sistema e busca o JSON
         setTimeout(async () => {
             try {
                 const response = await fetch('data/db.json');
                 app.data = await response.json();
                 
-                // 1. Renderiza o Dashboard
+                // Renderiza o Painel Principal (Home)
                 app.render('home'); 
                 
-                // 2. Renderiza o Footer (agora é fixo e separado)
+                // Renderiza o Rodapé Fixo (Minimalista)
                 app.renderFooter();
                 
             } catch (error) {
-                console.error("Erro ao carregar dados:", error);
+                console.error("Erro ao carregar banco de dados:", error);
             }
         }, 800);
 
-        // Menu Logic
+        // 4. Lógica de Navegação (Menu Superior)
         document.querySelectorAll('.nav-item').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
+                // Troca a classe active
                 document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
+                
+                // Renderiza a nova tela
                 app.render(e.target.dataset.target);
             });
         });
     },
 
+    // API de Mercado (AwesomeAPI)
     fetchMarketData: async () => {
         try {
             const res = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
             const data = await res.json();
+            
+            // Atualiza o DOM se os elementos existirem
             if(document.getElementById('val-usd')) {
                 document.getElementById('val-usd').innerText = parseFloat(data.USDBRL.bid).toFixed(2);
                 document.getElementById('val-eur').innerText = parseFloat(data.EURBRL.bid).toFixed(2);
                 document.getElementById('val-btc').innerText = parseFloat(data.BTCBRL.bid).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
             }
         } catch (e) {
-            console.log("API de mercado offline");
+            console.log("Sistema de mercado offline (API Error)");
         }
     },
 
+    // Tela de Carregamento (Skeleton Screen)
     renderSkeleton: () => {
         const grid = `
             <div class="bento-grid" style="opacity:0.6">
-                <div class="tile col-8" style="height:300px"><div class="skeleton" style="width:50%; height:40px; margin-bottom:20px"></div><div class="skeleton" style="width:100%; height:100px"></div></div>
+                <div class="tile col-8" style="height:300px">
+                    <div class="skeleton" style="width:50%; height:40px; margin-bottom:20px"></div>
+                    <div class="skeleton" style="width:100%; height:100px"></div>
+                </div>
                 <div class="tile col-4" style="height:300px"><div class="skeleton" style="width:100%; height:100%"></div></div>
                 <div class="tile col-4" style="height:200px"><div class="skeleton" style="width:100%; height:100%"></div></div>
                 <div class="tile col-4" style="height:200px"><div class="skeleton" style="width:100%; height:100%"></div></div>
@@ -58,11 +73,13 @@ const app = {
         document.getElementById('app-content').innerHTML = grid;
     },
 
+    // Renderizador de Conteúdo Principal
     render: (view) => {
         const container = document.getElementById('app-content');
         const d = app.data;
         let html = '';
 
+        // --- VIEW: DASHBOARD (HOME) ---
         if (view === 'home') {
             html = `
                 <div class="bento-grid">
@@ -74,6 +91,7 @@ const app = {
                             <button class="btn-contact" onclick="app.render('tech')">Ver Portfólio Técnico</button>
                         </div>
                     </div>
+
                     <div class="tile col-4" style="background:var(--text-primary); color:white;">
                         <h3 style="color:#94a3b8">Core Skills</h3>
                         <ul style="list-style:none; margin-top:20px;">
@@ -88,11 +106,13 @@ const app = {
                             </li>
                         </ul>
                     </div>
+
                     <div class="tile col-6">
                         <h3>Último Projeto</h3>
                         <h2>${d.tech[0].title}</h2>
                         <p style="font-size:0.9rem">${d.tech[0].details}</p>
                     </div>
+
                     <div class="tile col-6">
                         <h3>Visão de Mercado</h3>
                         <p>"${d.finance.macro_view}"</p>
@@ -101,6 +121,7 @@ const app = {
             `;
         }
 
+        // --- VIEW: FINANCE (ASSET MANAGEMENT) ---
         if (view === 'finance') {
             html = `
                 <div class="bento-grid">
@@ -108,6 +129,7 @@ const app = {
                         <h3>Tese de Investimento</h3>
                         <h1>${d.finance.thesis}</h1>
                     </div>
+                    
                     ${d.finance.portfolio.map(p => `
                         <div class="tile col-6">
                             <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
@@ -122,6 +144,7 @@ const app = {
             `;
         }
 
+        // --- VIEW: TECH (ENGINEERING) ---
         if (view === 'tech') {
             html = `
                 <div class="bento-grid">
@@ -129,6 +152,7 @@ const app = {
                         <h1>Engenharia de Software</h1>
                         <p>Desenvolvimento de soluções focadas em estabilidade e segurança.</p>
                     </div>
+
                     ${d.tech.map(t => `
                         <div class="tile col-4">
                             <span class="tech-pill" style="background:#EFF6FF; color:var(--accent)">${t.hook}</span>
@@ -144,42 +168,37 @@ const app = {
             `;
         }
 
+        // Injeta o HTML no container principal
         container.innerHTML = html;
-        feather.replace();
+        feather.replace(); // Atualiza ícones
     },
 
-    // Footer Renderizado FORA do App Content
+    // --- RODAPÉ MINIMALISTA (Compacto & System-Like) ---
     renderFooter: () => {
         const d = app.data;
         const footerHTML = `
             <div class="footer-container">
-                <div class="col-4">
+                <div style="display:flex; flex-direction:column; gap:4px;">
                     <h2>${d.profile.name}</h2>
-                    <p style="margin-top:10px">
-                        ${d.profile.location}<br>
-                        &copy; 2026. All rights reserved.
-                    </p>
+                    <span class="copyright">&copy; 2026. System v2.0</span>
                 </div>
-                <div class="col-4">
-                    <h3>Navegação</h3>
-                    <ul>
-                        <li><a href="#" onclick="app.render('home')">Dashboard</a></li>
-                        <li><a href="#" onclick="app.render('finance')">Asset Management</a></li>
-                        <li><a href="#" onclick="app.render('tech')">Engineering</a></li>
-                    </ul>
-                </div>
-                <div class="col-4">
-                    <h3>Conecte-se</h3>
-                    <ul>
-                        <li><a href="mailto:${d.profile.social.email}">Email Corporativo</a></li>
-                        <li><a href="https://${d.profile.social.linkedin}" target="_blank">LinkedIn</a></li>
-                        <li><a href="https://${d.profile.social.github}" target="_blank">GitHub</a></li>
-                    </ul>
-                </div>
+
+                <ul class="footer-links">
+                    <li><a href="#" onclick="app.render('home'); return false;">Dashboard</a></li>
+                    <li><a href="#" onclick="app.render('finance'); return false;">Investimentos</a></li>
+                    <li><a href="#" onclick="app.render('tech'); return false;">Engenharia</a></li>
+                </ul>
+
+                <ul class="footer-links">
+                    <li><a href="https://${d.profile.social.linkedin}" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://${d.profile.social.github}" target="_blank">GitHub</a></li>
+                    <li><a href="mailto:${d.profile.social.email}">Email</a></li>
+                </ul>
             </div>
         `;
         document.getElementById('app-footer').innerHTML = footerHTML;
     }
 };
 
+// Iniciar Aplicação ao carregar a página
 document.addEventListener('DOMContentLoaded', app.init);
