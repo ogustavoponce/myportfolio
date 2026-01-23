@@ -1,10 +1,10 @@
 {
   "profile": {
     "name": "Gustavo Ponce",
-    "role": "Jovem Aprendiz & Futuro Bancário",
-    "headline": "Estudante do IFPR unindo TI e Finanças para crescer no Sicredi.",
-    "about": "Tenho 16 anos e um plano claro: conquistar minha independência financeira e me tornar Gerente de Negócios. Atualmente sou Jovem Aprendiz pelo CIEE e uso meus conhecimentos técnicos do IFPR (Informática) para criar soluções reais, enquanto estudo pesado para a certificação CPA-20.",
-    "location": "Telêmaco Borba, PR",
+    "role": "Desenvolvedor & Analista Jr.",
+    "headline": "Soluções tecnológicas focadas em eficiência e gestão de dados.",
+    "about": "Profissional focado na intersecção entre Tecnologia e Finanças. Atuo no desenvolvimento de sistemas web para gestão, automação de processos e análise de dados para tomada de decisão estratégica.",
+    "location": "Paraná, Brasil",
     "social": {
       "github": "#",
       "linkedin": "#",
@@ -12,55 +12,55 @@
     }
   },
   "finance": {
-    "thesis": "Meu foco agora é acumulação pura. Como tenho o tempo a meu favor (juros compostos), invisto pensando na minha casa e no meu carro, priorizando segurança mas sem deixar dinheiro parado.",
+    "thesis": "Apresentação de competência analítica baseada em leitura de cenário macroeconômico e alocação diversificada de ativos.",
     "roadmap": [
-      { "year": "2026 (Agora)", "goal": "Tirar a CPA-20 e focar no Inglês", "status": "active" },
-      { "year": "2026 (Fim do ano)", "goal": "Entrar como Estagiário em Agência", "status": "pending" },
-      { "year": "2027", "goal": "Começar Facul (Economia ou Gestão)", "status": "future" },
-      { "year": "2028", "goal": "Tirar a CEA e virar Especialista", "status": "future" }
+      { "year": "Foco Atual", "goal": "Certificações ANBIMA (CPA)", "status": "active" },
+      { "year": "Competência", "goal": "Análise de Produtos Bancários", "status": "active" },
+      { "year": "Competência", "goal": "Matemática Financeira", "status": "active" },
+      { "year": "Idioma", "goal": "Inglês Técnico", "status": "pending" }
     ],
     "allocation": {
-      "labels": ["Tesouro Direto (Segurança)", "FIIs (Renda Mensal)", "Ações de Bancos", "Caixa p/ Oportunidades"],
-      "data": [50, 30, 10, 10],
-      "colors": ["#1e40af", "#3b82f6", "#60a5fa", "#e2e8f0"]
+      "labels": ["Renda Fixa / Liquidez", "Fundos Imobiliários", "Renda Variável", "Reserva de Oportunidade"],
+      "data": [45, 25, 20, 10],
+      "colors": ["#0f172a", "#334155", "#475569", "#94a3b8"]
     }
   },
   "tech": [
     {
       "id": 1,
-      "title": "App Thimanni Amaral",
-      "type": "Web App (Em desenvolvimento)",
-      "techs": ["JavaScript", "Firebase", "CSS Moderno"],
-      "description": "Estou criando um sistema para um Personal Trainer gerenciar alunos. O sistema tem área de login e controle de treinos. Mostra que sei resolver problemas reais de clientes.",
+      "title": "Sistema de Gestão Thimanni",
+      "type": "SaaS / Web Application",
+      "techs": ["JavaScript", "Firebase", "UX/UI"],
+      "description": "Plataforma completa para administração de clientes e treinos personalizados. Foco em escalabilidade e experiência do usuário (Mobile First).",
       "link": "#"
     },
     {
       "id": 2,
-      "title": "Plataforma Prof. Domenico",
-      "type": "Projeto Educacional",
-      "techs": ["HTML5", "Lógica de Programação"],
-      "description": "Desenvolvimento de uma plataforma web de Língua Portuguesa para auxiliar nas aulas do meu professor no IFPR. Tecnologia aplicada à educação.",
+      "title": "Portal Educacional",
+      "type": "EdTech",
+      "techs": ["HTML5 Semântico", "CSS Grid", "Interatividade"],
+      "description": "Desenvolvimento de ambiente virtual de aprendizado para suporte acadêmico, otimizando a distribuição de conteúdo didático.",
       "link": "#"
     },
     {
       "id": 3,
-      "title": "Nexus Frame",
-      "type": "Gestão & Agência",
-      "techs": ["Gestão de Projetos", "Marketing"],
-      "description": "Atuo na parte comercial e estratégica da Nexus Frame, minha agência experimental com amigos. Aqui aprendo sobre vendas e liderança na prática.",
+      "title": "Nexus Business Intelligence",
+      "type": "Consultoria & Dados",
+      "techs": ["Análise de Dados", "Estratégia Comercial"],
+      "description": "Implementação de processos comerciais e estruturação de funil de vendas baseada em métricas de conversão.",
       "link": "#"
     }
   ],
   "blog": [
     {
-      "date": "22 Jan 2026",
-      "title": "Meu plano para passar na CPA-20 estudando sozinho",
-      "preview": "Como estou organizando minha rotina entre IFPR, CIEE e os estudos para a certificação da ANBIMA."
+      "date": "Jan 2026",
+      "title": "Análise: O impacto da Selic nos investimentos de Renda Fixa",
+      "preview": "Um estudo técnico sobre como a taxa de juros atual afeta a atratividade de títulos públicos e privados."
     },
     {
-      "date": "15 Jan 2026",
-      "title": "Por que quero trabalhar no Sicredi?",
-      "preview": "Uma análise sobre o cooperativismo e porque vejo meu futuro crescendo dentro dessa instituição."
+      "date": "Jan 2026",
+      "title": "Tech: Por que bancos utilizam arquitetura de microsserviços",
+      "preview": "Entendendo a lógica por trás da modernização dos sistemas bancários atuais."
     }
   ]
 }
