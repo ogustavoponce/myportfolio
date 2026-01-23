@@ -9,12 +9,19 @@ const app = {
             try {
                 const response = await fetch('data/db.json');
                 app.data = await response.json();
+                
+                // 1. Renderiza o Dashboard
                 app.render('home'); 
+                
+                // 2. Renderiza o Footer (agora é fixo e separado)
+                app.renderFooter();
+                
             } catch (error) {
                 console.error("Erro ao carregar dados:", error);
             }
         }, 800);
 
+        // Menu Logic
         document.querySelectorAll('.nav-item').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -137,42 +144,41 @@ const app = {
             `;
         }
 
-        container.innerHTML = html + app.renderFooter();
+        container.innerHTML = html;
         feather.replace();
     },
 
-    // Footer Azul Royal
+    // Footer Renderizado FORA do App Content
     renderFooter: () => {
         const d = app.data;
-        return `
-            <footer>
-                <div class="bento-grid">
-                    <div class="col-4">
-                        <h2>${d.profile.name}</h2>
-                        <p style="margin-top:10px">
-                            ${d.profile.location}<br>
-                            &copy; 2026. All rights reserved.
-                        </p>
-                    </div>
-                    <div class="col-4">
-                        <h3>Navegação</h3>
-                        <ul>
-                            <li><a href="#" onclick="app.render('home')">Dashboard</a></li>
-                            <li><a href="#" onclick="app.render('finance')">Asset Management</a></li>
-                            <li><a href="#" onclick="app.render('tech')">Engineering</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-4">
-                        <h3>Conecte-se</h3>
-                        <ul>
-                            <li><a href="mailto:${d.profile.social.email}">Email Corporativo</a></li>
-                            <li><a href="https://${d.profile.social.linkedin}" target="_blank">LinkedIn</a></li>
-                            <li><a href="https://${d.profile.social.github}" target="_blank">GitHub</a></li>
-                        </ul>
-                    </div>
+        const footerHTML = `
+            <div class="footer-container">
+                <div class="col-4">
+                    <h2>${d.profile.name}</h2>
+                    <p style="margin-top:10px">
+                        ${d.profile.location}<br>
+                        &copy; 2026. All rights reserved.
+                    </p>
                 </div>
-            </footer>
+                <div class="col-4">
+                    <h3>Navegação</h3>
+                    <ul>
+                        <li><a href="#" onclick="app.render('home')">Dashboard</a></li>
+                        <li><a href="#" onclick="app.render('finance')">Asset Management</a></li>
+                        <li><a href="#" onclick="app.render('tech')">Engineering</a></li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <h3>Conecte-se</h3>
+                    <ul>
+                        <li><a href="mailto:${d.profile.social.email}">Email Corporativo</a></li>
+                        <li><a href="https://${d.profile.social.linkedin}" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://${d.profile.social.github}" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
         `;
+        document.getElementById('app-footer').innerHTML = footerHTML;
     }
 };
 
