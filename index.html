@@ -3,138 +3,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gustavo Ponce | Tech & Finance Authority</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Gustavo Ponce | Future Banker</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- CSS EMBUTIDO (ESTILO) --- */
+        :root {
+            --bg-page: #F5F7FA;
+            --bg-surface: #FFFFFF;
+            --border-subtle: #E6E8EB;
+            --text-primary: #0F172A;
+            --text-secondary: #64748B;
+            --accent: #2563EB; /* Azul Royal */
+            --accent-dark: #1e40af;
+            --accent-green: #10B981;
+            --radius-lg: 20px;
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-page);
+            background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            line-height: 1.5;
+            display: flex; flex-direction: column; min-height: 100vh;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* HEADER */
+        .top-bar {
+            background-color: var(--text-primary);
+            color: rgba(255,255,255,0.8);
+            font-size: 11px; padding: 8px 0;
+            font-family: var(--font-mono);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .top-bar-content { display: flex; justify-content: space-between; align-items: center; }
+        .market-data { display: flex; gap: 20px; }
+        .indicator strong { color: #fff; margin-left: 5px; }
+        .system-status { display: flex; align-items: center; gap: 6px; text-transform: uppercase; font-weight: 700; font-size: 9px; }
+        .dot { width: 6px; height: 6px; background-color: #10b981; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+        .main-header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            position: sticky; top: 0; z-index: 1000;
+            padding: 16px 0;
+        }
+        .header-wrapper { display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo { font-size: 1.25rem; font-weight: 800; color: var(--text-primary); text-decoration: none; letter-spacing: -0.03em; }
+        .highlight { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 4px; background: rgba(0,0,0,0.04); padding: 4px; border-radius: 100px; }
+        .nav-item { text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 14px; padding: 8px 20px; border-radius: 100px; transition: all 0.2s; cursor: pointer; }
+        .nav-item:hover { color: var(--text-primary); background: rgba(255,255,255,0.5); }
+        .nav-item.active { background: var(--bg-surface); color: var(--text-primary); box-shadow: 0 2px 5px rgba(0,0,0,0.05); font-weight: 600; }
+
+        .btn-contact { background: var(--text-primary); color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; transition: transform 0.2s; }
+        .btn-contact:hover { background: #000; transform: translateY(-1px); }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
+
+        /* GRID SYSTEM */
+        #app-content { padding-top: 40px; padding-bottom: 80px; flex-grow: 1; }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; opacity: 0; animation: fadeIn 0.5s forwards; }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        .tile {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            display: flex; flex-direction: column;
+            transition: all 0.2s;
+        }
+        .tile:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); }
+
+        .col-12 { grid-column: span 12; }
+        .col-8 { grid-column: span 8; }
+        .col-6 { grid-column: span 6; }
+        .col-4 { grid-column: span 4; }
+
+        h1 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 16px; }
+        h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; }
+        h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); font-weight: 700; margin-bottom: 16px; }
+        p { font-size: 1rem; color: var(--text-secondary); max-width: 600px; }
+
+        .tech-pill { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 600; background: #F1F5F9; color: var(--text-secondary); border: 1px solid var(--border-subtle); margin-right: 6px; margin-bottom: 6px; }
+        .status-badge { background: #DCFCE7; color: #166534; padding: 6px 12px; border-radius: 100px; font-size: 12px; font-weight: 700; display: inline-block; margin-bottom: 16px; }
+        .skeleton { background: linear-gradient(90deg, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 8px; }
+
+        /* CERTIFICAÇÕES */
+        .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
+        .cert-card { background: white; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 30px 20px; text-align: center; position: relative; transition: all 0.3s ease; opacity: 0.5; filter: grayscale(100%); }
+        .cert-card:hover { opacity: 1; filter: grayscale(0%); transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .cert-icon { width: 60px; height: 60px; margin: 0 auto 15px auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .bg-cpa { background: #84cc16; }
+        .bg-cpror { background: #1e40af; }
+        .bg-cproi { background: #f97316; }
+        .cert-title { font-weight: 800; font-size: 1rem; color: var(--text-primary); margin-bottom: 5px; }
+        .cert-desc { font-size: 0.8rem; color: var(--text-secondary); }
+        .status-tag { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--text-primary); color: white; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); white-space: nowrap; }
+
+        /* CALCULADORAS */
+        .calc-box { margin-top: 20px; }
+        .calc-input-group { margin-bottom: 15px; }
+        .calc-input-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 5px; }
+        .calc-input { width: 100%; padding: 12px; border: 1px solid var(--border-subtle); border-radius: 8px; font-family: var(--font-mono); font-size: 14px; }
+        .calc-input:focus { border-color: var(--accent); outline: none; }
+        .btn-calc { background: var(--accent); color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .btn-calc:hover { background: var(--accent-dark); }
+        .calc-result { margin-top: 20px; padding: 15px; background: #F8FAFC; border-radius: 8px; border-left: 4px solid var(--accent); display: none; animation: fadeIn 0.3s; }
+        .calc-result p { background: #eef2ff; padding: 10px; border-radius: 4px; margin-top: 10px; font-style: italic; font-size: 14px; color: var(--text-primary); }
+
+        /* FOOTER */
+        footer { width: 100%; background-color: var(--accent); color: white; padding: 60px 0 30px 0; margin-top: auto; border-top: 4px solid rgba(0,0,0,0.1); }
+        .footer-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: flex-start; }
+        footer h2 { color: white !important; font-size: 18px; margin: 0; }
+        .footer-links { list-style: none; margin: 0; padding: 0; }
+        .footer-links li { margin-bottom: 10px; }
+        footer a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.2s; }
+        footer a:hover { color: white; text-decoration: underline; }
+
+        @media (max-width: 900px) {
+            .bento-grid, .footer-container, .cert-grid { display: flex; flex-direction: column; }
+            .nav-links, .header-actions { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+    </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container nav-content">
-            <a href="#" class="logo">GP<span class="dot">.</span>Authority</a>
-            <ul class="nav-links">
-                <li><a href="#hero">Perfil</a></li>
-                <li><a href="#certs">Certificações</a></li>
-                <li><a href="#projects">Projetos TI</a></li>
-                <li><a href="#blog">Artigos Técnicos</a></li>
-            </ul>
-            <a href="mailto:contato@gustavoponce.com" class="btn-contact">Fale Comigo</a>
-        </div>
-    </nav>
-
-    <section id="hero" class="hero-section">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <span class="badge">Jovem Aprendiz & Developer</span>
-                <h1>A Nova Geração do <br>Mercado Financeiro.</h1>
-                <p>Meu nome é <strong>Gustavo Ponce</strong>. Aos 16 anos, não estou apenas aprendendo a operar o sistema bancário; estou aprendendo a <em>construí-lo</em>. Uno a oratória comercial com a lógica de programação.</p>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <strong>IFPR</strong>
-                        <span>Formação Técnica</span>
-                    </div>
-                    <div class="stat">
-                        <strong>ANBIMA</strong>
-                        <span>Em Certificação</span>
-                    </div>
-                    <div class="stat">
-                        <strong>FULLSTACK</strong>
-                        <span>JS & Python</span>
-                    </div>
-                </div>
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="market-data">
+                <span class="indicator">ANBIMA <strong>Nova Regra</strong></span>
+                <span class="indicator">SELIC <strong>11.25%</strong></span>
+                <span class="indicator">IPCA <strong>4.50%</strong></span>
             </div>
-            <div class="hero-image">
-                <div class="photo-placeholder">
-                    <img src="https://via.placeholder.com/400x500/1e3a8a/ffffff?text=FOTO+DO+GUSTAVO" alt="Gustavo Ponce">
-                </div>
+            <div class="system-status">
+                <span class="dot"></span> System Operational
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="certs" class="section-white">
-        <div class="container">
-            <div class="section-header">
-                <h2>Roadmap de Autoridade</h2>
-                <p>Minha jornada técnica para dominar as diretrizes da ANBIMA.</p>
+    <header class="main-header">
+        <div class="container header-wrapper">
+            <a href="#" class="brand-logo" onclick="app.render('home'); return false;">
+                GP<span class="highlight">.</span>Finance
+            </a>
+            <nav class="nav-links">
+                <a class="nav-item active" data-target="home">Dashboard</a>
+                <a class="nav-item" data-target="tools">Simuladores</a>
+                <a class="nav-item" data-target="finance">Investimentos</a>
+                <a class="nav-item" data-target="tech">Projetos Tech</a>
+            </nav>
+            <div class="header-actions">
+                <a href="mailto:contato@gustavoponce.com" class="btn-contact">Fale Comigo</a>
             </div>
-            
-            <div class="certs-display">
-                <img src="assets/anbima-badges.png" alt="CPA, C-Pro R, C-Pro I" class="anbima-img">
-                
-                <div class="progress-bar-container">
-                    <div class="progress-info">
-                        <span>Status Atual: Estudando CPA-20</span>
-                        <span>35% Concluído</span>
-                    </div>
-                    <div class="progress-track">
-                        <div class="progress-fill"></div>
-                    </div>
-                </div>
-            </div>
+            <button class="mobile-menu-btn">☰</button>
         </div>
-    </section>
+    </header>
 
-    <section id="projects" class="section-grey">
-        <div class="container">
-            <div class="section-header">
-                <h2>Engenharia Financeira</h2>
-                <p>Não apenas teoria. Ferramentas práticas que desenvolvi.</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="icon-box"><i data-feather="grid"></i></div>
-                    <h3>HP-12C Web Emulator</h3>
-                    <p>Réplica funcional da calculadora financeira mais usada no mundo. Desenvolvida em JavaScript puro para cálculos de VPL e TIR.</p>
-                    <a href="#" class="link-arrow">Testar Ferramenta &rarr;</a>
-                </div>
-                <div class="project-card">
-                    <div class="icon-box"><i data-feather="home"></i></div>
-                    <h3>Simulador SAC vs PRICE</h3>
-                    <p>Algoritmo que compara sistemas de amortização imobiliária, mostrando a economia real de juros no longo prazo.</p>
-                    <a href="#" class="link-arrow">Ver Comparativo &rarr;</a>
-                </div>
-                <div class="project-card">
-                    <div class="icon-box"><i data-feather="trending-up"></i></div>
-                    <h3>Validador de Investimentos</h3>
-                    <p>Script Python que consome API do Banco Central para comparar rentabilidade líquida de LCI x CDB x Poupança.</p>
-                    <a href="#" class="link-arrow">Ver Código &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <main class="container" id="app-content"></main>
 
-    <section id="blog" class="section-white">
-        <div class="container">
-            <div class="section-header">
-                <h2>Knowledge Base</h2>
-                <p>Pesquisas e artigos técnicos sobre o mercado financeiro.</p>
-            </div>
-            
-            <div class="blog-grid" id="blog-container">
-                </div>
-            
-            <div class="center-btn">
-                <button class="btn-outline">Carregar Mais Artigos (+42)</button>
-            </div>
-        </div>
-    </section>
+    <footer id="app-footer"></footer>
 
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-left">
-                <h3>Gustavo Ponce</h3>
-                <p>Futuro Especialista em Investimentos & Desenvolvedor.</p>
-            </div>
-            <div class="footer-right">
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
-                <a href="#">Email</a>
-            </div>
-        </div>
-    </footer>
+    <script>
+        // --- DADOS (DB) EMBUTIDOS PARA FUNCIONAR SEM SERVER ---
+        const db = {
+            "profile": {
+                "name": "Gustavo Ponce",
+                "headline": "Onde a Tecnologia encontra a Eficiência Bancária.",
+                "subheadline": "16 Anos. Jovem Aprendiz. Desenvolvedor Fullstack. Focado na nova trilha de certificações por competência da ANBIMA.",
+                "about": "O mercado mudou. As certificações antigas (CPA-10/20) deram lugar às competências reais. Enquanto atuo no CIEE e estudo no IFPR, estou construindo minha base técnica para a Nova CPA, visando a especialização futura em Relacionamento (C-Pro R) e Investimento (C-Pro I). Minha missão é unir a oratória comercial com a precisão dos dados.",
+                "status": "Em preparação: Nova CPA",
+                "social": { "linkedin": "gustavoponce", "email": "contato@gustavoponce.com" }
+            },
+            "finance": {
+                "thesis": "Estratégia Híbrida: Utilizar a tecnologia para personalizar o atendimento (C-Pro R) e a matemática para otimizar portfólios (C-Pro I).",
+                "macro_view": "Na nova era bancária, o gerente não é um vendedor de produtos, é um arquiteto de soluções financeiras. Meus simuladores provam essa tese.",
+                "portfolio": [
+                    { "asset": "Base Técnica", "ticker": "Nova CPA", "allocation": "Prioridade 1", "rationale": "Fundamentos de Economia e Ética." },
+                    { "asset": "Carreira", "ticker": "C-Pro R", "allocation": "Meta Curto Prazo", "rationale": "Foco em Relacionamento e Venda Consultiva." },
+                    { "asset": "Especialização", "ticker": "C-Pro I", "allocation": "Meta Longo Prazo", "rationale": "Domínio de Alocação e Derivativos." }
+                ]
+            },
+            "tech": [
+                { "title": "Simulador de Crédito & Consórcio", "category": "Ferramenta C-Pro R", "stack": ["JS", "Math Financeira"], "details": "Uma ferramenta de venda consultiva. Prova matematicamente ao cliente quando o Consórcio vence o Financiamento.", "hook": "Foco em Relacionamento" },
+                { "title": "Thimanni: Gestão de Recebíveis", "category": "Fintech / Solução PJ", "stack": ["Firebase", "Analytics"], "details": "Sistema para organizar o fluxo de caixa de clientes PJ.", "hook": "Visão PJ" },
+                { "title": "Validador de Investimentos", "category": "Ferramenta C-Pro I", "stack": ["Python Logic"], "details": "Algoritmo que compara LCI/LCA com CDBs, descontando o IR regressivo.", "hook": "Análise Técnica" }
+            ]
+        };
 
-    <script src="data/articles.js"></script> <script src="script.js"></script>
-    <script>feather.replace()</script>
+        // --- APLICAÇÃO (JS) ---
+        const app = {
+            init: () => {
+                app.renderSkeleton();
+                // Simula carregamento
+                setTimeout(() => {
+                    app.render('home');
+                    app.renderFooter();
+                }, 500);
+
+                // Menu
+                document.querySelectorAll('.nav-item').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+                        e.target.classList.add('active');
+                        app.render(e.target.dataset.target);
+                    });
+                });
+            },
+
+            renderSkeleton: () => {
+                document.getElementById('app-content').innerHTML = `<div class="bento-grid" style="opacity:0.6"><div class="tile col-12" style="height:400px"><div class="skeleton" style="width:100%; height:100%"></div></div></div>`;
+            },
+
+            render: (view) => {
+                const container = document.getElementById('app-content');
+                let html = '';
+
+                // HOME
+                if (view === 'home') {
+                    html = `
+                        <div class="bento-grid">
+                            <div class="tile col-8">
+                                <span class="status-badge">🟢 ${db.profile.status}</span>
+                                <h1>${db.profile.name}</h1>
+                                <h2 style="font-size: 1.1rem; color: var(--accent); margin-bottom: 20px;">${db.profile.subheadline}</h2>
+                                <p>${db.profile.about}</p>
+                                <div style="margin-top:auto; padding-top:30px; display:flex; gap:10px">
+                                    <button class="btn-calc" style="width:auto" onclick="app.render('tools')">Abrir Simuladores</button>
+                                    <button class="btn-calc" style="width:auto; background:white; color:#333; border:1px solid #ddd" onclick="app.render('finance')">Ver Tese</button>
+                                </div>
+                            </div>
+                            <div class="tile col-4" style="background:var(--text-primary); color:white;">
+                                <h3 style="color:#94a3b8">Diferenciais Híbridos</h3>
+                                <ul style="list-style:none; margin-top:20px; line-height: 2;">
+                                    <li>✅ Venda Consultiva</li>
+                                    <li>✅ Matemática Financeira</li>
+                                    <li>✅ Automação (Python/JS)</li>
+                                    <li>✅ Foco na Nova Regra</li>
+                                </ul>
+                            </div>
+                            <div class="tile col-12">
+                                <h3>Roadmap de Qualificação ANBIMA</h3>
+                                <div class="cert-grid">
+                                    <div class="cert-card">
+                                        <div class="status-tag">Em Andamento</div>
+                                        <div class="cert-icon bg-cpa">CPA</div>
+                                        <div class="cert-title">Nova CPA</div>
+                                        <div class="cert-desc">Certificação Profissional</div>
+                                    </div>
+                                    <div class="cert-card">
+                                        <div class="status-tag">Em Breve</div>
+                                        <div class="cert-icon bg-cpror">R</div>
+                                        <div class="cert-title">C-Pro R</div>
+                                        <div class="cert-desc">Relacionamento</div>
+                                    </div>
+                                    <div class="cert-card">
+                                        <div class="status-tag">Futuro</div>
+                                        <div class="cert-icon bg-cproi">I</div>
+                                        <div class="cert-title">C-Pro I</div>
+                                        <div class="cert-desc">Investimento</div>
+                                    </div>
+                                </div>
+                                <p style="text-align:center; margin-top:20px; font-size:0.8rem; opacity:0.7">*Estudando ativamente para cobrir toda a trilha.</p>
+                            </div>
+                            <div class="tile col-6"><h3>Destaque Tech</h3><h2>${db.tech[0].title}</h2><p>${db.tech[0].details}</p></div>
+                            <div class="tile col-6"><h3>Visão Macro</h3><p>"${db.finance.macro_view}"</p></div>
+                        </div>
+                    `;
+                }
+
+                // TOOLS
+                if (view === 'tools') {
+                    html = `
+                        <div class="bento-grid">
+                            <div class="tile col-12"><h1>Ferramentas de Consultoria</h1><p>Simuladores de decisão.</p></div>
+                            <div class="tile col-6">
+                                <span class="tech-pill">Consórcio vs Financiamento</span>
+                                <h2>Decisor de Sonhos</h2>
+                                <div class="calc-box">
+                                    <div class="calc-input-group"><label>Valor (R$)</label><input type="number" id="valorBem" class="calc-input" value="50000"></div>
+                                    <div class="calc-input-group"><label>Prazo (Meses)</label><input type="number" id="prazoMeses" class="calc-input" value="60"></div>
+                                    <button class="btn-calc" onclick="calcConsorcio()">Calcular</button>
+                                    <div id="resConsorcio" class="calc-result"></div>
+                                </div>
+                            </div>
+                            <div class="tile col-6">
+                                <span class="tech-pill">Tributação</span>
+                                <h2>CDB vs LCI</h2>
+                                <div class="calc-box">
+                                    <div class="calc-input-group"><label>Taxa CDB (%)</label><input type="number" id="taxaCDB" class="calc-input" value="110"></div>
+                                    <div class="calc-input-group"><label>Prazo (Meses)</label><input type="number" id="prazoInvest" class="calc-input" value="12"></div>
+                                    <button class="btn-calc" onclick="calcTributacao()">Calcular</button>
+                                    <div id="resTributacao" class="calc-result"></div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // FINANCE & TECH
+                if (view === 'finance') {
+                    html = `<div class="bento-grid"><div class="tile col-12"><h1>Tese Financeira</h1><p>${db.finance.thesis}</p></div>${db.finance.portfolio.map(p=>`<div class="tile col-6"><span class="tech-pill">${p.asset}</span><h2>${p.ticker}</h2><p>${p.rationale}</p></div>`).join('')}</div>`;
+                }
+                if (view === 'tech') {
+                    html = `<div class="bento-grid"><div class="tile col-12"><h1>Projetos Tech</h1></div>${db.tech.map(t=>`<div class="tile col-4"><span class="tech-pill">${t.hook}</span><h3>${t.category}</h3><h2>${t.title}</h2><p>${t.details}</p></div>`).join('')}</div>`;
+                }
+
+                container.innerHTML = html;
+                feather.replace();
+            },
+
+            renderFooter: () => {
+                const f = `
+                <div class="footer-container">
+                    <div><h2>${db.profile.name}</h2><span class="copyright">Desenvolvido com Lógica e Estratégia.</span></div>
+                    <div><h3>Links</h3><ul class="footer-links"><li><a href="#" onclick="app.render('tools')">Simuladores</a></li><li><a href="#" onclick="app.render('finance')">Tese</a></li></ul></div>
+                    <div><h3>Social</h3><ul class="footer-links"><li><a href="#">LinkedIn</a></li><li><a href="mailto:${db.profile.social.email}">Email</a></li></ul></div>
+                </div>`;
+                document.getElementById('app-footer').innerHTML = f;
+            }
+        };
+
+        // Funções Globais para o HTML acessar
+        function calcConsorcio() {
+            const v = parseFloat(document.getElementById('valorBem').value);
+            const m = parseInt(document.getElementById('prazoMeses').value);
+            const fin = v * 0.016 / (1 - Math.pow(1.016, -m)) * m;
+            const con = v * 1.16;
+            const eco = fin - con;
+            document.getElementById('resConsorcio').style.display = 'block';
+            document.getElementById('resConsorcio').innerHTML = `<div>Financiamento: R$ ${Math.round(fin)}</div><div>Consórcio: R$ ${Math.round(con)}</div><p>Economia de R$ ${Math.round(eco)} com Consórcio.</p>`;
+        }
+        function calcTributacao() {
+            const cdb = parseFloat(document.getElementById('taxaCDB').value);
+            const d = parseInt(document.getElementById('prazoInvest').value) * 30;
+            let aliq = d > 720 ? 0.15 : (d > 360 ? 0.175 : (d > 180 ? 0.20 : 0.225));
+            const lci = cdb * (1 - aliq);
+            document.getElementById('resTributacao').style.display = 'block';
+            document.getElementById('resTributacao').innerHTML = `<div>IR: ${(aliq*100)}%</div><p>CDB ${cdb}% = LCI ${lci.toFixed(2)}%.</p>`;
+        }
+
+        document.addEventListener('DOMContentLoaded', app.init);
+    </script>
 </body>
 </html>
