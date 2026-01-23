@@ -1,81 +1,116 @@
 const app = {
-    data: null, // Armazena o JSON
-    
-    // Inicialização
+    data: null,
+
     init: async () => {
-        app.data = await API.getDB();
-        app.updateTicker();
-        app.router('home'); // Carrega a home por padrão
-        feather.replace(); // Ícones
-    },
-
-    // Roteador SPA
-    router: (view) => {
-        const container = document.getElementById('app-container');
+        // Carrega os dados reais
+        const response = await fetch('data/db.json');
+        app.data = await response.json();
         
-        // Atualiza botões do menu
-        document.querySelectorAll('.nav-link').forEach(btn => {
-            btn.classList.remove('active');
-            if(btn.dataset.target === view) btn.classList.add('active');
-        });
-
-        // Renderiza a view correta
-        if (view === 'home') container.innerHTML = Components.home(app.data);
-        if (view === 'tech') {
-            container.innerHTML = Components.tech(app.data);
-            feather.replace();
-        } 
-        if (view === 'blog') container.innerHTML = Components.blog(app.data);
+        // Inicia na Home
+        app.render('home');
         
-        if (view === 'finance') {
-            container.innerHTML = Components.finance(app.data);
-            app.renderChart(); // Desenha o gráfico
-        }
-    },
-
-    // Ticker de Mercado
-    updateTicker: async () => {
-        const market = await API.getMarket();
-        if(!market) return;
-        
-        const el = document.querySelector('.ticker-content');
-        const usd = parseFloat(market.USDBRL.bid).toFixed(2);
-        const eur = parseFloat(market.EURBRL.bid).toFixed(2);
-        const usdVar = market.USDBRL.pctChange > 0 ? 'trend-up' : 'trend-down';
-        
-        el.innerHTML = `
-            <span>💵 USD/BRL: <strong>R$ ${usd}</strong> <small class="${usdVar}">(${market.USDBRL.pctChange}%)</small></span>
-            <span>💶 EUR/BRL: <strong>R$ ${eur}</strong></span>
-            <span>🏦 SELIC: <strong>11.25%</strong></span>
-            <span>📊 IBOV: <strong>127.400 pts</strong></span>
-        `;
-    },
-
-    // Gráfico Chart.js
-    renderChart: () => {
-        setTimeout(() => {
-            const ctx = document.getElementById('financeChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: app.data.finance.allocation.labels,
-                    datasets: [{
-                        data: app.data.finance.allocation.data,
-                        backgroundColor: app.data.finance.allocation.colors,
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { position: 'bottom', labels: { color: '#a8b2d1', font: {family: 'Fira Code'} } }
-                    },
-                    cutout: '70%'
-                }
+        // Ativa os botões do menu
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Remove active de todos e adiciona no clicado
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                // Renderiza a seção
+                app.render(e.target.dataset.target);
             });
-        }, 100); // Pequeno delay para garantir que o HTML existe
+        });
+    },
+
+    render: (view) => {
+        const container = document.getElementById('app-content');
+        const d = app.data;
+
+        // EFEITO FADE IN
+        container.style.opacity = 0;
+        setTimeout(() => container.style.opacity = 1, 100);
+
+        if (view === 'home') {
+            container.innerHTML = `
+                <div class="hero">
+                    <span class="badge">🚀 Rumo ao Sicredi</span>
+                    <h1>${d.profile.name}</h1>
+                    <h2>${d.profile.headline}</h2>
+                    <p style="max-width: 600px; margin: 0 auto; color: #64748b;">${d.profile.about}</p>
+                </div>
+                <div class="grid-3">
+                    <div class="card">
+                        <h3>🎓 IFPR</h3>
+                        <p>Técnico em Informática</p>
+                    </div>
+                    <div class="card">
+                        <h3>💼 CIEE</h3>
+                        <p>Jovem Aprendiz Ativo</p>
+                    </div>
+                    <div class="card">
+                        <h3>📈 CPA-20</h3>
+                        <p>Focadão nos estudos</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        if (view === 'finance') {
+            container.innerHTML = `
+                <h2 class="section-title">💰 Minha Jornada Financeira</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>Objetivos (Roadmap)</h3>
+                        <div style="margin-top: 20px;">
+                            ${d.finance.roadmap.map(item => `
+                                <div class="roadmap-step ${item.status}">
+                                    <span>${item.year}</span>
+                                    <h4>${item.goal}</h4>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Onde eu investiria hoje</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">${d.finance.thesis}</p>
+                        <canvas id="chartFinance"></canvas>
+                    </div>
+                </div>
+            `;
+            // Renderiza o gráfico depois que o HTML existir
+            setTimeout(() => {
+                new Chart(document.getElementById('chartFinance'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: d.finance.allocation.labels,
+                        datasets: [{
+                            data: d.finance.allocation.data,
+                            backgroundColor: d.finance.allocation.colors,
+                            borderWidth: 0
+                        }]
+                    },
+                    options: { responsive: true, cutout: '75%', plugins: { legend: { position: 'bottom' } } }
+                });
+            }, 50);
+        }
+
+        if (view === 'tech') {
+            container.innerHTML = `
+                <h2 class="section-title">💻 Projetos & Código</h2>
+                <div class="grid-3">
+                    ${d.tech.map(proj => `
+                        <div class="card">
+                            <span style="font-size:0.8rem; color:var(--primary); font-weight:bold;">${proj.type}</span>
+                            <h3 style="margin: 10px 0;">${proj.title}</h3>
+                            <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 20px;">${proj.description}</p>
+                            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                                ${proj.techs.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
     }
 };
 
-// Start
 document.addEventListener('DOMContentLoaded', app.init);

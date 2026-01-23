@@ -1,66 +1,66 @@
 {
   "profile": {
     "name": "Gustavo Ponce",
-    "role": "Fullstack Dev & Financial Analyst",
-    "headline": "Construindo a intersecção entre Tecnologia e Mercado de Capitais.",
-    "about": "Aos 16 anos, combino a lógica da Engenharia de Software (IFPR) com a estratégia de Alocação de Ativos. Atualmente no CIEE, meu foco é obter a certificação CPA-20 e ingressar no Sicredi para modernizar a gestão de investimentos.",
+    "role": "Jovem Aprendiz & Futuro Bancário",
+    "headline": "Estudante do IFPR unindo TI e Finanças para crescer no Sicredi.",
+    "about": "Tenho 16 anos e um plano claro: conquistar minha independência financeira e me tornar Gerente de Negócios. Atualmente sou Jovem Aprendiz pelo CIEE e uso meus conhecimentos técnicos do IFPR (Informática) para criar soluções reais, enquanto estudo pesado para a certificação CPA-20.",
     "location": "Telêmaco Borba, PR",
     "social": {
-      "github": "https://github.com/seuuser",
-      "linkedin": "https://linkedin.com/in/seuuser",
+      "github": "#",
+      "linkedin": "#",
       "email": "contato@gustavoponce.com"
     }
   },
   "finance": {
-    "thesis": "Minha tese de investimento foca em assimetria convexa: proteção de capital principal via Renda Fixa High Grade (aproveitando o ciclo de juros real acima de 6%) combinada com exposição direcional em ativos de tecnologia e eficiência bancária.",
+    "thesis": "Meu foco agora é acumulação pura. Como tenho o tempo a meu favor (juros compostos), invisto pensando na minha casa e no meu carro, priorizando segurança mas sem deixar dinheiro parado.",
     "roadmap": [
-      { "year": "2026 Q1", "goal": "Certificação CPA-20 (ANBIMA)", "status": "active" },
-      { "year": "2026 Q3", "goal": "Ingresso no Sicredi (Estágio/Efetivo)", "status": "pending" },
-      { "year": "2027", "goal": "Certificação CEA (Especialista)", "status": "future" },
-      { "year": "2030", "goal": "CFP® & Gestão Wealth", "status": "future" }
+      { "year": "2026 (Agora)", "goal": "Tirar a CPA-20 e focar no Inglês", "status": "active" },
+      { "year": "2026 (Fim do ano)", "goal": "Entrar como Estagiário em Agência", "status": "pending" },
+      { "year": "2027", "goal": "Começar Facul (Economia ou Gestão)", "status": "future" },
+      { "year": "2028", "goal": "Tirar a CEA e virar Especialista", "status": "future" }
     ],
     "allocation": {
-      "labels": ["Renda Fixa (IPCA+)", "FIIs (Tijolo/Papel)", "Ações (Setor Bancário)", "Ações (Tech/Growth)", "Caixa/Dólar"],
-      "data": [45, 25, 15, 10, 5],
-      "colors": ["#1e3a8a", "#2563eb", "#3b82f6", "#60a5fa", "#94a3b8"]
+      "labels": ["Tesouro Direto (Segurança)", "FIIs (Renda Mensal)", "Ações de Bancos", "Caixa p/ Oportunidades"],
+      "data": [50, 30, 10, 10],
+      "colors": ["#1e40af", "#3b82f6", "#60a5fa", "#e2e8f0"]
     }
   },
   "tech": [
     {
       "id": 1,
-      "title": "Thimanni Amaral - Gestão Fitness",
-      "type": "SaaS / Web App",
-      "techs": ["JavaScript ES6", "Firebase Firestore", "Chart.js"],
-      "description": "Plataforma completa para gestão de alunos de Personal Trainer. Inclui dashboard financeiro, controle de treinos e área do aluno. Resolve o problema de escalabilidade do profissional autônomo.",
+      "title": "App Thimanni Amaral",
+      "type": "Web App (Em desenvolvimento)",
+      "techs": ["JavaScript", "Firebase", "CSS Moderno"],
+      "description": "Estou criando um sistema para um Personal Trainer gerenciar alunos. O sistema tem área de login e controle de treinos. Mostra que sei resolver problemas reais de clientes.",
       "link": "#"
     },
     {
       "id": 2,
-      "title": "Nexus Frame - Business Intelligence",
-      "type": "Automação & Estratégia",
-      "techs": ["Python", "Data Analysis", "Automation"],
-      "description": "Ferramentas de automação comercial desenvolvidas para a agência Nexus Frame, focadas em funil de vendas e relatórios de performance de mídia.",
+      "title": "Plataforma Prof. Domenico",
+      "type": "Projeto Educacional",
+      "techs": ["HTML5", "Lógica de Programação"],
+      "description": "Desenvolvimento de uma plataforma web de Língua Portuguesa para auxiliar nas aulas do meu professor no IFPR. Tecnologia aplicada à educação.",
       "link": "#"
     },
     {
       "id": 3,
-      "title": "Simulador Juros Reais",
-      "type": "Financial Script",
-      "techs": ["Vanilla JS", "DOM Manipulation", "Math Logic"],
-      "description": "Algoritmo que calcula rentabilidade real de investimentos descontando inflação projetada e imposto de renda regressivo. Uma ferramenta para provar teses de longo prazo.",
+      "title": "Nexus Frame",
+      "type": "Gestão & Agência",
+      "techs": ["Gestão de Projetos", "Marketing"],
+      "description": "Atuo na parte comercial e estratégica da Nexus Frame, minha agência experimental com amigos. Aqui aprendo sobre vendas e liderança na prática.",
       "link": "#"
     }
   ],
   "blog": [
     {
-      "date": "Jan 22, 2026",
-      "title": "Por que a tecnologia é o novo 'English' para banqueiros",
-      "preview": "Uma análise sobre como Python e SQL estão substituindo o Excel nas mesas de operações..."
+      "date": "22 Jan 2026",
+      "title": "Meu plano para passar na CPA-20 estudando sozinho",
+      "preview": "Como estou organizando minha rotina entre IFPR, CIEE e os estudos para a certificação da ANBIMA."
     },
     {
-      "date": "Jan 10, 2026",
-      "title": "Minha estratégia para passar na CPA-20 em 30 dias",
-      "preview": "O cronograma de estudos e o material que estou utilizando para garantir a aprovação de primeira..."
+      "date": "15 Jan 2026",
+      "title": "Por que quero trabalhar no Sicredi?",
+      "preview": "Uma análise sobre o cooperativismo e porque vejo meu futuro crescendo dentro dessa instituição."
     }
   ]
 }
