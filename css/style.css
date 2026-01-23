@@ -1,0 +1,115 @@
+/* --- VARIÁVEIS DE SISTEMA --- */
+:root {
+    --navy-dark: #020c1b;
+    --navy: #0a192f;
+    --navy-light: #112240;
+    --slate: #8892b0;
+    --light-slate: #a8b2d1;
+    --white: #e6f1ff;
+    --blue-accent: #64ffda; /* Um toque ciano estilo 'Terminal' */
+    --sicredi-blue: #3b82f6; /* Azul Institucional */
+    
+    --font-main: 'Inter', sans-serif;
+    --font-code: 'Fira Code', monospace;
+    
+    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* --- RESET & BASE --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: var(--navy);
+    color: var(--slate);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 { color: var(--white); font-weight: 700; margin-bottom: 20px; }
+a { text-decoration: none; color: var(--sicredi-blue); transition: var(--transition); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+
+/* --- TICKER DE MERCADO --- */
+.market-ticker {
+    background: var(--navy-dark);
+    border-bottom: 1px solid var(--navy-light);
+    padding: 8px 0;
+    font-size: 13px;
+    font-family: var(--font-code);
+    white-space: nowrap;
+}
+.ticker-content span { margin-right: 25px; }
+.trend-up { color: #10b981; }
+.trend-down { color: #ef4444; }
+
+/* --- NAVBAR --- */
+.navbar {
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
+    height: 80px;
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-wrapper {
+    height: 100%; display: flex; justify-content: space-between; align-items: center;
+}
+.logo { font-size: 1.5rem; font-weight: 800; color: var(--white); }
+.logo span { color: var(--sicredi-blue); }
+
+.nav-link {
+    background: transparent; border: none; color: var(--light-slate);
+    font-family: var(--font-code); font-size: 13px; margin-left: 20px; cursor: pointer;
+    padding: 10px; transition: var(--transition);
+}
+.nav-link:hover, .nav-link.active { color: var(--sicredi-blue); }
+
+/* --- MAIN LAYOUT & CARDS --- */
+#app-container { min-height: 80vh; padding-top: 50px; padding-bottom: 50px; }
+
+/* Animação de Entrada */
+.fade-in { animation: fadeIn 0.5s ease forwards; opacity: 0; transform: translateY(20px); }
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+/* Hero Section */
+.hero-section { max-width: 800px; margin-top: 50px; }
+.hero-pre { color: var(--sicredi-blue); font-family: var(--font-code); font-size: 16px; margin-bottom: 20px; display: block; }
+.hero-title { font-size: 4rem; line-height: 1.1; color: var(--white); margin-bottom: 10px; }
+.hero-subtitle { font-size: 3rem; line-height: 1.1; color: var(--slate); margin-bottom: 30px; }
+.hero-desc { max-width: 500px; font-size: 1.1rem; margin-bottom: 50px; }
+
+/* Glass Cards */
+.glass-card {
+    background: var(--navy-light);
+    border-radius: 8px;
+    padding: 30px;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+.glass-card:hover { transform: translateY(-7px); border-color: var(--sicredi-blue); box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7); }
+
+/* Grids */
+.grid-2 { display: grid; grid-template-columns: 3fr 2fr; gap: 40px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+
+/* Tech Specifics */
+.project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+.folder-icon { color: var(--sicredi-blue); width: 40px; height: 40px; }
+.tech-list { display: flex; gap: 15px; font-family: var(--font-code); font-size: 12px; margin-top: 20px; color: var(--light-slate); }
+
+/* Finance Specifics */
+.roadmap-item {
+    border-left: 2px solid var(--navy-light); padding-left: 20px; margin-bottom: 20px; position: relative;
+}
+.roadmap-item::before {
+    content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--slate);
+}
+.roadmap-item.active { border-color: var(--sicredi-blue); }
+.roadmap-item.active::before { background: var(--sicredi-blue); box-shadow: 0 0 10px var(--sicredi-blue); }
+
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 2rem; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .navbar { height: auto; padding: 15px 0; }
+    .nav-wrapper { flex-direction: column; gap: 15px; }
+}

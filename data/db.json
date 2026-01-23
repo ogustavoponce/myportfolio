@@ -1,0 +1,66 @@
+{
+  "profile": {
+    "name": "Gustavo Ponce",
+    "role": "Fullstack Dev & Financial Analyst",
+    "headline": "Construindo a intersecção entre Tecnologia e Mercado de Capitais.",
+    "about": "Aos 16 anos, combino a lógica da Engenharia de Software (IFPR) com a estratégia de Alocação de Ativos. Atualmente no CIEE, meu foco é obter a certificação CPA-20 e ingressar no Sicredi para modernizar a gestão de investimentos.",
+    "location": "Telêmaco Borba, PR",
+    "social": {
+      "github": "https://github.com/seuuser",
+      "linkedin": "https://linkedin.com/in/seuuser",
+      "email": "contato@gustavoponce.com"
+    }
+  },
+  "finance": {
+    "thesis": "Minha tese de investimento foca em assimetria convexa: proteção de capital principal via Renda Fixa High Grade (aproveitando o ciclo de juros real acima de 6%) combinada com exposição direcional em ativos de tecnologia e eficiência bancária.",
+    "roadmap": [
+      { "year": "2026 Q1", "goal": "Certificação CPA-20 (ANBIMA)", "status": "active" },
+      { "year": "2026 Q3", "goal": "Ingresso no Sicredi (Estágio/Efetivo)", "status": "pending" },
+      { "year": "2027", "goal": "Certificação CEA (Especialista)", "status": "future" },
+      { "year": "2030", "goal": "CFP® & Gestão Wealth", "status": "future" }
+    ],
+    "allocation": {
+      "labels": ["Renda Fixa (IPCA+)", "FIIs (Tijolo/Papel)", "Ações (Setor Bancário)", "Ações (Tech/Growth)", "Caixa/Dólar"],
+      "data": [45, 25, 15, 10, 5],
+      "colors": ["#1e3a8a", "#2563eb", "#3b82f6", "#60a5fa", "#94a3b8"]
+    }
+  },
+  "tech": [
+    {
+      "id": 1,
+      "title": "Thimanni Amaral - Gestão Fitness",
+      "type": "SaaS / Web App",
+      "techs": ["JavaScript ES6", "Firebase Firestore", "Chart.js"],
+      "description": "Plataforma completa para gestão de alunos de Personal Trainer. Inclui dashboard financeiro, controle de treinos e área do aluno. Resolve o problema de escalabilidade do profissional autônomo.",
+      "link": "#"
+    },
+    {
+      "id": 2,
+      "title": "Nexus Frame - Business Intelligence",
+      "type": "Automação & Estratégia",
+      "techs": ["Python", "Data Analysis", "Automation"],
+      "description": "Ferramentas de automação comercial desenvolvidas para a agência Nexus Frame, focadas em funil de vendas e relatórios de performance de mídia.",
+      "link": "#"
+    },
+    {
+      "id": 3,
+      "title": "Simulador Juros Reais",
+      "type": "Financial Script",
+      "techs": ["Vanilla JS", "DOM Manipulation", "Math Logic"],
+      "description": "Algoritmo que calcula rentabilidade real de investimentos descontando inflação projetada e imposto de renda regressivo. Uma ferramenta para provar teses de longo prazo.",
+      "link": "#"
+    }
+  ],
+  "blog": [
+    {
+      "date": "Jan 22, 2026",
+      "title": "Por que a tecnologia é o novo 'English' para banqueiros",
+      "preview": "Uma análise sobre como Python e SQL estão substituindo o Excel nas mesas de operações..."
+    },
+    {
+      "date": "Jan 10, 2026",
+      "title": "Minha estratégia para passar na CPA-20 em 30 dias",
+      "preview": "O cronograma de estudos e o material que estou utilizando para garantir a aprovação de primeira..."
+    }
+  ]
+}
