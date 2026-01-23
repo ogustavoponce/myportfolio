@@ -27,6 +27,11 @@ const app = {
         });
     },
 
+    // Mercado (Pode reconectar API real aqui se quiser)
+    fetchMarketData: async () => {
+        // Exemplo simples placeholder, pode descomentar a API real do código anterior
+    },
+
     renderSkeleton: () => {
         document.getElementById('app-content').innerHTML = `<div class="bento-grid" style="opacity:0.6"><div class="tile col-12" style="height:400px"><div class="skeleton" style="width:100%; height:100%"></div></div></div>`;
     },
@@ -36,34 +41,57 @@ const app = {
         const d = app.data;
         let html = '';
 
-        // --- VIEW: HOME ---
+        // --- VIEW: HOME (Com o Roadmap ANBIMA) ---
         if (view === 'home') {
             html = `
                 <div class="bento-grid">
                     <div class="tile col-8">
                         <span class="status-badge">🟢 ${d.profile.status}</span>
-                        <h1 style="font-size: 2rem;">${d.profile.name}: ${d.profile.headline}</h1>
+                        <h1 style="font-size: 2rem;">${d.profile.name}</h1>
                         <h2 style="font-size: 1.1rem; color: var(--accent); margin-bottom: 20px;">${d.profile.subheadline}</h2>
                         <p style="font-size: 1rem; line-height: 1.6;">${d.profile.about}</p>
                         
                         <div style="margin-top:auto; padding-top:30px; display:flex; gap:10px">
-                            <button class="btn-calc" style="width:auto" onclick="app.render('tools')">Acessar Simuladores</button>
+                            <button class="btn-calc" style="width:auto" onclick="app.render('tools')">Abrir Simuladores</button>
                             <button class="btn-calc" style="width:auto; background:white; color:#333; border:1px solid #ddd" onclick="app.render('finance')">Ver Tese</button>
                         </div>
                     </div>
 
                     <div class="tile col-4" style="background:var(--text-primary); color:white;">
-                        <h3 style="color:#94a3b8">Diferenciais</h3>
+                        <h3 style="color:#94a3b8">Diferenciais Híbridos</h3>
                         <ul style="list-style:none; margin-top:20px; line-height: 2;">
                             <li>✅ Venda Consultiva</li>
                             <li>✅ Matemática Financeira</li>
-                            <li>✅ Automação com Python</li>
-                            <li>✅ Foco em Metas</li>
+                            <li>✅ Automação (Python/JS)</li>
+                            <li>✅ Foco na Nova Regra</li>
                         </ul>
-                        <div style="margin-top:auto; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1)">
-                            <small style="color:#94a3b8">Status Atual</small><br>
-                            <strong>Estudando C_PRO R</strong>
+                    </div>
+
+                    <div class="tile col-12">
+                        <h3>Roadmap de Qualificação ANBIMA</h3>
+                        <div class="cert-grid">
+                            <div class="cert-card">
+                                <div class="status-tag">Em Andamento</div>
+                                <div class="cert-icon bg-cpa">CPA</div>
+                                <div class="cert-title">Nova CPA</div>
+                                <div class="cert-desc">Certificação Profissional</div>
+                            </div>
+
+                            <div class="cert-card">
+                                <div class="status-tag">Em Breve</div>
+                                <div class="cert-icon bg-cpror">R</div>
+                                <div class="cert-title">C-Pro Relacionamento</div>
+                                <div class="cert-desc">Especialização Comercial</div>
+                            </div>
+
+                            <div class="cert-card">
+                                <div class="status-tag">Futuro</div>
+                                <div class="cert-icon bg-cproi">I</div>
+                                <div class="cert-title">C-Pro Investimento</div>
+                                <div class="cert-desc">Especialização Técnica</div>
+                            </div>
                         </div>
+                        <p style="text-align:center; margin-top:20px; font-size:0.8rem; color:var(--text-secondary); opacity:0.8">*Estudando ativamente para cobrir toda a trilha de conhecimento.</p>
                     </div>
 
                     <div class="tile col-6">
@@ -80,7 +108,7 @@ const app = {
             `;
         }
 
-        // --- VIEW: TOOLS (AS 3 CALCULADORAS) ---
+        // --- VIEW: TOOLS ---
         if (view === 'tools') {
             html = `
                 <div class="bento-grid">
@@ -177,7 +205,6 @@ const app = {
         feather.replace();
     },
 
-    // --- RODAPÉ AZUL ROYAL ---
     renderFooter: () => {
         const d = app.data;
         const footerHTML = `
@@ -218,7 +245,7 @@ const app = {
         res.innerHTML = `
             <div style="font-size:0.9rem;"><strong>Financiamento:</strong> ${totalFinanc.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</div>
             <div style="font-size:0.9rem;"><strong>Consórcio:</strong> ${totalConsorcio.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})}</div>
-            <p style="margin-top:10px; font-weight:600; color:var(--accent);">"Se você pode esperar ser contemplado, o Consórcio economiza ${economia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})} no seu bolso."</p>
+            <p>"Se você pode esperar ser contemplado, o Consórcio economiza ${economia.toLocaleString('pt-BR', {style:'currency', currency:'BRL'})} no seu bolso."</p>
         `;
     },
 
@@ -234,7 +261,7 @@ const app = {
         res.style.display = 'block';
         res.innerHTML = `
             <div><strong>Alíquota IR:</strong> ${(aliquota*100).toFixed(1)}%</div>
-            <p style="margin-top:10px; font-weight:600; color:var(--accent);">"Um CDB de ${cdb}% equivale a uma LCI de ${lci.toFixed(2)}%. Se o banco oferecer menos, fique no CDB."</p>
+            <p>"Um CDB de ${cdb}% equivale a uma LCI de ${lci.toFixed(2)}%. Se o banco oferecer menos, fique no CDB."</p>
         `;
     },
 
@@ -250,7 +277,7 @@ const app = {
         res.innerHTML = `
             <div style="font-size:1rem;">Acumulado:</div>
             <strong style="font-size:2rem; color:var(--accent);">${vf.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}</strong>
-            <p style="margin-top:10px; font-weight:600;">"O segredo não é o aporte, é a constância."</p>
+            <p>"O segredo não é o aporte, é a constância."</p>
         `;
     }
 };
