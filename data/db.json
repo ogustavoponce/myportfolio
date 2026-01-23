@@ -1,44 +1,43 @@
 {
   "profile": {
     "name": "Gustavo Ponce",
-    "role": "Financial Software Developer",
-    "headline": "Arquitetando soluções onde a eficiência do Código encontra a liquidez do Capital.",
-    "about": "Profissional híbrido focado no setor bancário. Diferente de um dev comum, eu entendo de Juros e Amortização. Diferente de um bancário comum, eu sei automatizar processos com Python e JavaScript. Meu objetivo é eliminar ineficiências operacionais.",
-    "location": "Brasil • Remote & Presencial",
-    "status": "Open to Work",
+    "headline": "Desenvolvimento de Software aplicado à Eficiência de Capital.",
+    "about": "Profissional focado na intersecção entre Engenharia de Dados e Mercado Financeiro. Utilizo tecnologia para criar automações, mitigar riscos operacionais e otimizar a análise de investimentos.",
+    "location": "Brasil • Remote",
+    "status": "Disponível para Projetos",
     "social": {
-      "github": "github.com/gustavoponce",
-      "linkedin": "linkedin.com/in/gustavoponce",
+      "github": "gustavoponce",
+      "linkedin": "gustavoponce",
       "email": "business@gustavoponce.com"
     }
   },
   "finance": {
-    "thesis": "Estratégia Barbell: Proteção extrema em 80% do portfólio (Renda Fixa IPCA+ e High Grade) para permitir volatilidade agressiva nos 20% restantes (Small Caps e Tech).",
-    "macro_view": "Cenário de juros reais elevados (Selic > 10%) favorece acumulação em pós-fixados. Momento de cautela com Equity, focando apenas em setores perenes (Bancos/Elétricas).",
+    "thesis": "Alocação baseada em Convexidade: Proteção de capital principal em Renda Fixa High Grade combinada com exposição assimétrica em tecnologia e eficiência bancária.",
+    "macro_view": "Cenário de juros reais elevados favorece acumulação em pós-fixados e cautela com Equity.",
     "portfolio": [
       {
-        "asset": "Renda Fixa Soberana",
-        "ticker": "TD IPCA+ 2035",
+        "asset": "Soberanos (IPCA+)",
+        "ticker": "NTN-B 2035",
         "allocation": "45%",
-        "rationale": "Proteção contra inflação e garantia de juro real de 6% a.a. O alicerce da carteira."
+        "rationale": "Proteção contra inflação e garantia de juro real acima de 6%."
       },
       {
-        "asset": "Fundos Imobiliários",
+        "asset": "Real Estate (FIIs)",
         "ticker": "Carteira High Yield",
         "allocation": "25%",
-        "rationale": "Geração de fluxo de caixa mensal isento de IR para reinvestimento (Juros Compostos)."
+        "rationale": "Geração de fluxo de caixa recorrente isento de tributação."
       },
       {
-        "asset": "Renda Variável",
+        "asset": "Equity (Value)",
         "ticker": "Bancos & Utilities",
         "allocation": "20%",
-        "rationale": "Exposição a dividendos e ganho de capital em empresas descontadas (P/L baixo)."
+        "rationale": "Empresas descontadas com P/L baixo e alto dividend yield."
       },
       {
-        "asset": "Caixa / Liquidez",
-        "ticker": "CDB 100% CDI",
+        "asset": "Liquidez",
+        "ticker": "Caixa / CDI",
         "allocation": "10%",
-        "rationale": "Munição para aproveitar quedas abruptas do mercado (Black Swans)."
+        "rationale": "Reserva estratégica para oportunidades de mercado."
       }
     ]
   },
@@ -46,29 +45,26 @@
     {
       "id": 1,
       "title": "Thimanni Management System",
-      "category": "SaaS / Fintech",
-      "stack": ["JavaScript ES6", "Firebase Realtime", "Dashboard Analytics"],
-      "summary": "Sistema de gestão de assinaturas e pagamentos recorrentes.",
-      "details": "Desenvolvimento de uma plataforma completa para profissionais de saúde (Personal Trainers) gerenciarem fluxo de caixa e alunos. O sistema resolve o problema de inadimplência através de dashboards de cobrança.",
-      "financial_hook": "Automação de Recebíveis"
+      "category": "Fintech / SaaS",
+      "stack": ["JavaScript ES6", "Firebase", "Analytics"],
+      "details": "Plataforma de gestão financeira para profissionais liberais. Inclui automação de cobranças recorrentes e dashboard de inadimplência.",
+      "hook": "Automação de Recebíveis"
     },
     {
       "id": 2,
-      "title": "Credit Score Simulator Logic",
+      "title": "Credit Risk Simulator",
       "category": "Algoritmo Financeiro",
-      "stack": ["Python", "Pandas Logic", "Math Financeira"],
-      "summary": "Algoritmo de análise de risco e cálculo de juros.",
-      "details": "Script desenvolvido para simular a evolução de dívidas e investimentos com base na taxa Selic variável e inflação projetada. Utilizado para provar teses de investimento de longo prazo.",
-      "financial_hook": "Análise de Risco"
+      "stack": ["Python", "Pandas", "Math Logic"],
+      "details": "Algoritmo para simulação de cenários de crédito e amortização de dívidas, considerando variáveis macroeconômicas (Selic/IPCA).",
+      "hook": "Análise de Risco"
     },
     {
       "id": 3,
-      "title": "Nexus CRM & Funnel",
+      "title": "Nexus BI Dashboard",
       "category": "Business Intelligence",
-      "stack": ["Data Analysis", "Lead Tracking", "Automation"],
-      "summary": "Otimização de conversão de vendas baseada em dados.",
-      "details": "Implementação de lógica de CRM para agência digital, focando na métrica de CAC (Custo de Aquisição de Cliente) e LTV (Lifetime Value).",
-      "financial_hook": "Eficiência Operacional"
+      "stack": ["Data Viz", "CRM Logic", "Automation"],
+      "details": "Painel de inteligência comercial para acompanhamento de funil de vendas, CAC e LTV em tempo real.",
+      "hook": "Eficiência Operacional"
     }
   ]
 }
