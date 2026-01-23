@@ -7,149 +7,172 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
     <script src="https://unpkg.com/feather-icons"></script>
 
     <style>
-        /* --- 1. VARIÁVEIS T2 STYLE --- */
+        /* --- 1. PALETA DARK FINTECH --- */
         :root {
-            /* Paleta T2 Inspirada */
-            --t2-blue: #003366;       /* Azul Escuro Institucional */
-            --t2-light-blue: #0055AA; /* Azul Botão/Hover */
-            --t2-green: #28a745;      /* Verde Ação (Compra) */
-            --t2-gray: #f8f9fa;       /* Fundo Seções */
-            --text-dark: #333333;
-            --text-light: #666666;
-            --white: #ffffff;
+            /* Fundos Escuros */
+            --bg-body: #0B0E14;       /* Preto Profundo */
+            --bg-card: #151A23;       /* Cinza Escuro (Cards) */
+            --bg-header: #0B0E14;     /* Header Sólido */
+            
+            /* Cores de Texto */
+            --text-main: #FFFFFF;
+            --text-muted: #9CA3AF;
+            
+            /* Acentos (Neon/Brilhante) */
+            --accent-blue: #3B82F6;   /* Azul Tech */
+            --accent-hover: #2563EB;
+            --accent-green: #10B981;  /* Verde Lucro */
+            
+            /* Estrutura */
+            --border: #2D3748;        /* Bordas sutis */
+            --radius: 8px;
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
             
             --font-heading: 'Montserrat', sans-serif;
             --font-body: 'Open Sans', sans-serif;
-
-            --radius: 8px; /* Cantos levemente arredondados, não redondos */
-            --shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: var(--font-body);
-            color: var(--text-dark);
-            background-color: var(--t2-gray);
+            background-color: var(--bg-body);
+            color: var(--text-main);
             line-height: 1.6;
         }
 
-        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(--t2-blue); }
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; color: var(--text-main); }
 
-        /* --- 2. HEADER --- */
+        /* --- 2. HEADER DARK --- */
         header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: rgba(11, 14, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 15px 0;
         }
         .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; }
         
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--t2-blue); text-decoration: none; text-transform: uppercase; letter-spacing: -1px; }
-        .logo span { color: var(--t2-light-blue); }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--text-main); text-decoration: none; text-transform: uppercase; letter-spacing: -1px; }
+        .logo span { color: var(--accent-blue); }
 
         .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; font-family: var(--font-heading); }
-        .nav-links a:hover { color: var(--t2-light-blue); }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; transition: 0.3s; font-family: var(--font-heading); }
+        .nav-links a:hover { color: var(--accent-blue); }
 
         .btn-login {
-            border: 2px solid var(--t2-blue); color: var(--t2-blue);
+            border: 1px solid var(--accent-blue); color: var(--accent-blue);
             padding: 8px 24px; border-radius: var(--radius); text-decoration: none;
             font-weight: 700; font-family: var(--font-heading); transition: 0.3s;
         }
-        .btn-login:hover { background: var(--t2-blue); color: white; }
+        .btn-login:hover { background: var(--accent-blue); color: white; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
 
-        /* --- 3. HERO SECTION (Estilo Capa T2) --- */
+        /* --- 3. HERO (CAPA) --- */
         .hero {
-            background-color: var(--t2-blue);
-            color: white;
-            padding: 160px 0 100px 0;
+            padding: 180px 0 100px 0;
             text-align: center;
-            background-image: linear-gradient(135deg, #003366 0%, #004080 100%);
+            background: radial-gradient(circle at center, #1e293b 0%, #0B0E14 70%);
         }
-        .hero h1 { color: white; font-size: 3rem; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; }
-        .hero p { font-size: 1.2rem; color: rgba(255,255,255,0.9); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .badge {
+            display: inline-block; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue);
+            padding: 6px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700;
+            margin-bottom: 24px; border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.1; }
+        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
         
         .hero-btns { display: flex; gap: 20px; justify-content: center; }
         .btn-primary {
-            background: var(--t2-green); color: white;
+            background: var(--accent-green); color: #000;
             padding: 15px 40px; border-radius: var(--radius);
             text-decoration: none; font-weight: 800; font-size: 1rem;
             text-transform: uppercase; font-family: var(--font-heading);
-            box-shadow: 0 4px 0 #1e7e34; transition: 0.2s;
+            transition: 0.2s;
         }
-        .btn-primary:hover { transform: translateY(2px); box-shadow: 0 2px 0 #1e7e34; }
+        .btn-primary:hover { background: #34d399; transform: translateY(-2px); box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); }
         
         .btn-outline-white {
-            border: 2px solid white; color: white;
+            border: 1px solid var(--border); color: var(--text-main);
             padding: 13px 40px; border-radius: var(--radius);
             text-decoration: none; font-weight: 700; font-family: var(--font-heading);
             transition: 0.3s;
         }
-        .btn-outline-white:hover { background: white; color: var(--t2-blue); }
+        .btn-outline-white:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
 
-        /* --- 4. CARDS GRID (Estilo Cursos T2) --- */
-        .section { padding: 80px 0; }
-        .section-title { text-align: center; margin-bottom: 50px; }
+        /* --- 4. CARDS GRID (DARK MODE) --- */
+        .section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .section-title { text-align: center; margin-bottom: 60px; }
         .section-title h2 { font-size: 2.2rem; margin-bottom: 10px; }
-        .section-title p { color: var(--text-light); }
+        .section-title p { color: var(--text-muted); }
 
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
         
-        /* O Card T2 */
         .card-t2 {
-            background: white; border-radius: var(--radius);
-            box-shadow: var(--shadow); overflow: hidden;
-            display: flex; flex-direction: column;
-            transition: transform 0.3s; border-bottom: 4px solid var(--t2-blue);
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            overflow: hidden; display: flex; flex-direction: column;
+            transition: transform 0.3s; position: relative;
         }
-        .card-t2:hover { transform: translateY(-5px); }
+        .card-t2:hover { transform: translateY(-5px); border-color: var(--text-muted); }
 
-        .card-header {
-            background: var(--t2-blue); color: white; padding: 20px; text-align: center;
-        }
-        .card-header h3 { color: white; font-size: 1.2rem; margin: 0; }
-        .card-header .tag { font-size: 0.8rem; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 20px; margin-bottom: 10px; display: inline-block; }
+        .card-header { padding: 25px; text-align: center; border-bottom: 1px solid var(--border); }
+        .card-header h3 { font-size: 1.2rem; margin: 10px 0 0 0; }
+        .tag { font-size: 0.7rem; padding: 4px 10px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
-        .card-body { padding: 30px; flex-grow: 1; text-align: center; }
+        .tag-green { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
+        .tag-blue { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
+        .tag-orange { background: rgba(249, 115, 22, 0.2); color: #f97316; }
+
+        .card-body { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
         .card-list { list-style: none; margin-bottom: 30px; text-align: left; }
-        .card-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-light); display: flex; align-items: center; gap: 10px; }
-        .card-list li i { color: var(--t2-green); }
-
-        .card-price { margin-bottom: 20px; }
-        .card-price small { display: block; color: var(--text-light); font-size: 0.9rem; }
-        .card-price strong { font-size: 1.5rem; color: var(--t2-blue); font-weight: 800; }
+        .card-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-muted); display: flex; align-items: center; gap: 10px; }
+        .card-list li i { color: var(--accent-blue); width: 16px; }
 
         .btn-card {
-            display: block; width: 100%; background: var(--t2-blue); color: white;
-            padding: 15px; text-align: center; text-decoration: none; font-weight: 700;
-            text-transform: uppercase; transition: 0.3s; border-radius: 4px;
+            display: block; width: 100%; background: transparent; border: 1px solid var(--border);
+            color: var(--text-main); padding: 15px; text-align: center; text-decoration: none;
+            font-weight: 700; text-transform: uppercase; transition: 0.3s; border-radius: 4px; margin-top: auto;
         }
-        .btn-card:hover { background: var(--t2-light-blue); }
+        .btn-card:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+        .btn-active { background: var(--accent-blue); border-color: var(--accent-blue); color: white; }
+        .btn-active:hover { background: var(--accent-hover); color: white; }
 
-        /* --- 5. FERRAMENTAS (Clean) --- */
-        .tools-wrapper { background: white; padding: 40px; border-radius: var(--radius); box-shadow: var(--shadow); border-left: 5px solid var(--t2-green); }
-        .input-group label { display: block; font-weight: 700; color: var(--t2-blue); margin-bottom: 8px; font-size: 0.9rem; }
-        .input-field { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; margin-bottom: 20px; }
-        .btn-tool { background: var(--t2-green); color: white; border: none; padding: 15px; width: 100%; font-weight: 700; cursor: pointer; border-radius: 4px; text-transform: uppercase; }
-        .btn-tool:hover { background: #218838; }
-        .result-box { margin-top: 20px; padding: 20px; background: #f0fdf4; border: 1px solid #c3e6cb; border-radius: 4px; display: none; }
+        /* --- 5. FERRAMENTAS (Dashboard Style) --- */
+        .tools-wrapper {
+            background: var(--bg-card); padding: 40px; border-radius: var(--radius);
+            border: 1px solid var(--border); box-shadow: var(--shadow);
+        }
+        .input-group label { display: block; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; font-size: 0.8rem; text-transform: uppercase; }
+        .input-field {
+            width: 100%; padding: 14px; background: #0B0E14; border: 1px solid var(--border);
+            border-radius: 4px; font-size: 1rem; color: white; margin-bottom: 20px; outline: none; transition: 0.2s;
+        }
+        .input-field:focus { border-color: var(--accent-blue); }
+        
+        .btn-tool {
+            background: var(--accent-blue); color: white; border: none; padding: 15px;
+            width: 100%; font-weight: 700; cursor: pointer; border-radius: 4px; text-transform: uppercase;
+        }
+        .btn-tool:hover { background: var(--accent-hover); box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+        
+        .result-box {
+            margin-top: 20px; padding: 20px; background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 4px; display: none;
+        }
 
         /* --- 6. FOOTER --- */
-        footer { background: #1a1a1a; color: white; padding: 60px 0; margin-top: 80px; }
+        footer { background: #000; padding: 80px 0; border-top: 1px solid var(--border); }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
-        .footer-brand h4 { color: white; margin-bottom: 20px; }
-        .footer-brand p { color: #999; font-size: 0.9rem; }
+        .footer-brand h4 { color: white; margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-brand p { color: var(--text-muted); font-size: 0.9rem; }
         .footer-links h5 { color: white; margin-bottom: 20px; font-weight: 700; }
         .footer-links ul { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; }
-        .footer-links a:hover { color: white; }
+        .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
+        .footer-links a:hover { color: var(--accent-blue); }
 
         @media (max-width: 768px) {
             .grid-3 { grid-template-columns: 1fr; }
@@ -165,10 +188,9 @@
         <div class="container nav-flex">
             <a href="#" class="logo">GP<span>.Finance</span></a>
             <ul class="nav-links">
-                <li><a href="#certificacoes">Certificações</a></li>
+                <li><a href="#certificacoes">Roadmap</a></li>
                 <li><a href="#simuladores">Simuladores</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos Tech</a></li>
             </ul>
             <a href="mailto:contato@gustavoponce.com" class="btn-login">FALE COMIGO</a>
         </div>
@@ -176,11 +198,12 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Domine a Nova Era Bancária</h1>
-            <p>16 Anos. Jovem Aprendiz e Desenvolvedor. Preparando-me para a certificação ANBIMA C-Pro com tecnologia de ponta.</p>
+            <span class="badge">JOVEM APRENDIZ & DEV</span>
+            <h1>Tecnologia Bancária com Estratégia</h1>
+            <p>16 Anos. Estudante do IFPR. Preparando-me para a Nova Certificação ANBIMA com visão de futuro.</p>
             <div class="hero-btns">
                 <a href="#simuladores" class="btn-primary">TESTAR FERRAMENTAS</a>
-                <a href="#certificacoes" class="btn-outline-white">VER ROADMAP</a>
+                <a href="#certificacoes" class="btn-outline-white">VER MEU PLANO</a>
             </div>
         </div>
     </section>
@@ -193,26 +216,24 @@
             </div>
             
             <div class="grid-3">
-                <div class="card-t2">
-                    <div class="card-header" style="background: #28a745;"> <span class="tag">EM ANDAMENTO</span>
+                <div class="card-t2" style="border-top: 4px solid var(--accent-green);">
+                    <div class="card-header">
+                        <span class="tag tag-green">EM ANDAMENTO</span>
                         <h3>Nova CPA</h3>
                     </div>
                     <div class="card-body">
                         <ul class="card-list">
-                            <li><i data-feather="check"></i> Base do Mercado</li>
-                            <li><i data-feather="check"></i> Sistema Financeiro</li>
-                            <li><i data-feather="check"></i> Ética e Regulação</li>
+                            <li><i data-feather="check-circle"></i> Base do Mercado</li>
+                            <li><i data-feather="check-circle"></i> Sistema Financeiro</li>
+                            <li><i data-feather="check-circle"></i> Ética e Regulação</li>
                         </ul>
-                        <div class="card-price">
-                            <small>Status Atual:</small>
-                            <strong>Estudando</strong>
-                        </div>
-                        <a href="#" class="btn-card" style="background: #28a745;">Ver Conteúdo</a>
+                        <a href="#" class="btn-card btn-active">Estudando</a>
                     </div>
                 </div>
 
-                <div class="card-t2">
-                    <div class="card-header"> <span class="tag">META 2026</span>
+                <div class="card-t2" style="opacity: 0.7;">
+                    <div class="card-header">
+                        <span class="tag tag-blue">META 2026</span>
                         <h3>C-Pro Relacionamento</h3>
                     </div>
                     <div class="card-body">
@@ -221,16 +242,13 @@
                             <li><i data-feather="lock"></i> Produtos de Varejo</li>
                             <li><i data-feather="lock"></i> Suitability</li>
                         </ul>
-                        <div class="card-price">
-                            <small>Próximo Passo:</small>
-                            <strong>Especialização</strong>
-                        </div>
                         <a href="#" class="btn-card">Em Breve</a>
                     </div>
                 </div>
 
-                <div class="card-t2">
-                    <div class="card-header" style="background: #fd7e14;"> <span class="tag">LONGO PRAZO</span>
+                <div class="card-t2" style="opacity: 0.5;">
+                    <div class="card-header">
+                        <span class="tag tag-orange">LONGO PRAZO</span>
                         <h3>C-Pro Investimento</h3>
                     </div>
                     <div class="card-body">
@@ -239,27 +257,23 @@
                             <li><i data-feather="lock"></i> Gestão de Risco</li>
                             <li><i data-feather="lock"></i> Derivativos</li>
                         </ul>
-                        <div class="card-price">
-                            <small>Objetivo Final:</small>
-                            <strong>Autoridade</strong>
-                        </div>
-                        <a href="#" class="btn-card" style="background: #fd7e14;">Futuro</a>
+                        <a href="#" class="btn-card">Futuro</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="simuladores" class="section" style="background: white;">
+    <section id="simuladores" class="section">
         <div class="container">
             <div class="section-title">
                 <h2>Simulador de Decisão</h2>
-                <p>Ferramenta desenvolvida para consultoria financeira prática.</p>
+                <p>Consultoria financeira prática via código.</p>
             </div>
             
             <div class="grid-3" style="grid-template-columns: 2fr 1fr;">
                 <div class="tools-wrapper">
-                    <h3 style="margin-bottom: 20px; color: var(--t2-blue);">Consórcio vs. Financiamento</h3>
+                    <h3 style="margin-bottom: 20px; color: var(--accent-blue);">Consórcio vs. Financiamento</h3>
                     <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="input-group">
                             <label>Valor do Bem (R$)</label>
@@ -275,18 +289,13 @@
                 </div>
 
                 <div style="padding: 20px;">
-                    <h3 style="margin-bottom: 15px;">Por que esta ferramenta?</h3>
-                    <p style="margin-bottom: 15px; color: #666;">
-                        No modelo da T2 e da ANBIMA, o profissional precisa provar valor.
+                    <h3 style="margin-bottom: 15px; font-size: 1.5rem;">Por que código?</h3>
+                    <p style="margin-bottom: 15px; color: var(--text-muted);">
+                        O mercado financeiro moderno exige dados, não palpites.
                     </p>
-                    <p style="color: #666;">
-                        Criei este script para demonstrar matematicamente como a Taxa de Administração (fixa) vence os Juros Compostos (exponenciais) em prazos longos.
+                    <p style="color: var(--text-muted);">
+                        Desenvolvi este algoritmo para provar que a Taxa de Administração fixa vence os Juros Compostos em prazos longos. É assim que pretendo atender meus clientes: com transparência técnica.
                     </p>
-                    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
-                    <div style="display: flex; gap: 10px; align-items: center;">
-                        <i data-feather="code" style="color: var(--t2-blue);"></i>
-                        <small>Desenvolvido em JavaScript Puro</small>
-                    </div>
                 </div>
             </div>
         </div>
@@ -296,34 +305,34 @@
         <div class="container">
             <div class="section-title">
                 <h2>Projetos Tecnológicos</h2>
-                <p>Soluções práticas para problemas reais.</p>
+                <p>Soluções reais para problemas de negócio.</p>
             </div>
             <div class="grid-3">
-                <div class="card-t2" style="border-bottom: 4px solid #333;">
+                <div class="card-t2">
                     <div class="card-body" style="text-align: left;">
-                        <h3 style="margin-bottom: 10px; color: #333;">Thimanni SaaS</h3>
-                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 10px; color: var(--text-main);">Thimanni SaaS</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
                             Sistema de gestão de recebíveis para autônomos. Organiza fluxo de caixa e reduz inadimplência.
                         </p>
-                        <a href="#" style="color: var(--t2-blue); font-weight: 700; text-decoration: none;">Ver Case &rarr;</a>
+                        <a href="#" style="color: var(--accent-blue); font-weight: 700; text-decoration: none;">VER CÓDIGO &rarr;</a>
                     </div>
                 </div>
-                <div class="card-t2" style="border-bottom: 4px solid #333;">
+                <div class="card-t2">
                     <div class="card-body" style="text-align: left;">
-                        <h3 style="margin-bottom: 10px; color: #333;">Nexus BI</h3>
-                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 10px; color: var(--text-main);">Nexus BI</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
                             Dashboard de inteligência comercial. Rastreia leads e calcula custo de aquisição (CAC).
                         </p>
-                        <a href="#" style="color: var(--t2-blue); font-weight: 700; text-decoration: none;">Ver Case &rarr;</a>
+                        <a href="#" style="color: var(--accent-blue); font-weight: 700; text-decoration: none;">VER CÓDIGO &rarr;</a>
                     </div>
                 </div>
-                <div class="card-t2" style="border-bottom: 4px solid #333;">
+                <div class="card-t2">
                     <div class="card-body" style="text-align: left;">
-                        <h3 style="margin-bottom: 10px; color: #333;">Validador LCI</h3>
-                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">
+                        <h3 style="margin-bottom: 10px; color: var(--text-main);">Validador LCI</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
                             Algoritmo Python que compara rentabilidade líquida entre isentos e tributados.
                         </p>
-                        <a href="#" style="color: var(--t2-blue); font-weight: 700; text-decoration: none;">Ver Case &rarr;</a>
+                        <a href="#" style="color: var(--accent-blue); font-weight: 700; text-decoration: none;">VER CÓDIGO &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -335,10 +344,10 @@
             <div class="footer-brand">
                 <h4>GP.FINANCE</h4>
                 <p>Unindo Lógica de Programação e Estratégia Financeira para a nova era bancária.</p>
-                <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2026. Todos os direitos reservados.</p>
+                <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026. Todos os direitos reservados.</p>
             </div>
             <div class="footer-links">
-                <h5>Navegação</h5>
+                <h5>NAVEGAÇÃO</h5>
                 <ul>
                     <li><a href="#certificacoes">Roadmap ANBIMA</a></li>
                     <li><a href="#simuladores">Simuladores</a></li>
@@ -346,7 +355,7 @@
                 </ul>
             </div>
             <div class="footer-links">
-                <h5>Social</h5>
+                <h5>SOCIAL</h5>
                 <ul>
                     <li><a href="#">LinkedIn</a></li>
                     <li><a href="#">GitHub</a></li>
@@ -367,10 +376,11 @@
             const res = document.getElementById('resConsorcio');
             res.style.display = 'block';
             res.innerHTML = `
-                <div style="font-size:0.9rem; color:#666; margin-bottom:5px;">Economia Gerada:</div>
-                <div style="font-size:2rem; font-weight:800; color:#28a745; line-height:1;">R$ ${Math.round(eco).toLocaleString('pt-BR')}</div>
-                <div style="font-size:0.8rem; margin-top:10px; color:#666;">
-                    Financiamento: R$ ${Math.round(fin).toLocaleString('pt-BR')} | Consórcio: R$ ${Math.round(con).toLocaleString('pt-BR')}
+                <div style="font-size:0.9rem; color:#10B981; margin-bottom:5px; font-weight:700;">ECONOMIA GERADA</div>
+                <div style="font-size:2rem; font-weight:800; color:#fff; line-height:1;">R$ ${Math.round(eco).toLocaleString('pt-BR')}</div>
+                <div style="font-size:0.8rem; margin-top:10px; color:#9CA3AF;">
+                    Financiamento: R$ ${Math.round(fin).toLocaleString('pt-BR')} <br>
+                    Consórcio: R$ ${Math.round(con).toLocaleString('pt-BR')}
                 </div>
             `;
         }
