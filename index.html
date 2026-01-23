@@ -7,33 +7,38 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <script src="https://unpkg.com/feather-icons"></script>
 
     <style>
-        /* --- 1. VARIÁVEIS & RESET (PREMIUM FEEL) --- */
+        /* --- 1. VARIÁVEIS & ANIMAÇÕES --- */
         :root {
-            /* Cores Neutras (Fundo & Texto) */
-            --bg-body: #FAFAFA;       /* Off-white (Não cansa a vista) */
-            --bg-card: #FFFFFF;       /* Branco Puro */
-            --text-main: #111827;     /* Preto Suave */
-            --text-muted: #6B7280;    /* Cinza Médio */
+            --bg-body: #FAFAFA;
+            --bg-card: #FFFFFF;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+            --primary: #0f172a;
+            --accent: #2563EB;
             
-            /* Cores de Marca (Sicredi/Itaú vibes) */
-            --primary: #0f172a;       /* Azul Meia-noite (Corporativo) */
-            --accent: #2563EB;        /* Azul Royal (Ação) */
-            
-            /* Cores ANBIMA (Certificações) */
-            --cpa-color: #65a30d;     /* Verde */
-            --cpror-color: #0047BB;   /* Azul */
-            --cproi-color: #f97316;   /* Laranja */
+            /* Cores ANBIMA 3D */
+            --cpa-face: #84cc16; --cpa-side: #4d7c0f;
+            --cpror-face: #1d4ed8; --cpror-side: #1e3a8a;
+            --cproi-face: #f97316; --cproi-side: #c2410c;
 
-            /* Espaçamento & Formas */
-            --radius: 24px;           /* Cantos bem arredondados */
+            --radius: 24px;
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
-            
             --font-stack: 'Inter', -apple-system, sans-serif;
+        }
+
+        /* Animação de Entrada (Scroll Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,13 +51,14 @@
             overflow-x: hidden;
         }
 
-        /* --- 2. HEADER (FLUTUANTE & DISCRETO) --- */
+        /* --- 2. HEADER --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             background: rgba(250, 250, 250, 0.85);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(0,0,0,0.05);
             padding: 20px 0;
+            transition: 0.3s;
         }
         .nav-container {
             max-width: 1100px; margin: 0 auto; padding: 0 24px;
@@ -60,8 +66,13 @@
         }
         .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; color: var(--primary); text-decoration: none; }
         .nav-links { display: flex; gap: 32px; }
-        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: 0.2s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: 0.2s; position: relative; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+            background-color: var(--accent); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        
         .cta-button {
             background: var(--text-main); color: white; padding: 12px 24px;
             border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
@@ -69,118 +80,88 @@
         }
         .cta-button:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        /* --- 3. HERO SECTION (ESPAÇO EM BRANCO = LUXO) --- */
-        .hero {
-            padding: 180px 0 100px 0;
-            text-align: center;
-            max-width: 800px; margin: 0 auto;
-        }
+        /* --- 3. HERO --- */
+        .hero { padding: 180px 0 100px 0; text-align: center; max-width: 800px; margin: 0 auto; }
         .badge {
             display: inline-block; background: #E0F2FE; color: #0284C7;
             padding: 6px 16px; border-radius: 100px; font-size: 0.8rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px;
+            animation: float 3s ease-in-out infinite;
         }
-        .hero h1 {
-            font-size: 4rem; line-height: 1.1; font-weight: 800; letter-spacing: -2px;
-            color: var(--text-main); margin-bottom: 24px;
-        }
-        .hero p {
-            font-size: 1.25rem; color: var(--text-muted); line-height: 1.6;
-            max-width: 600px; margin: 0 auto 40px auto;
-        }
-
-        /* --- 4. GRID MODERNO (SEM BORDAS DURAS) --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        .section { padding: 80px 0; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
         
-        .section-title { margin-bottom: 60px; text-align: center; }
+        .hero h1 { font-size: 4rem; line-height: 1.1; font-weight: 800; letter-spacing: -2px; color: var(--text-main); margin-bottom: 24px; }
+        .hero p { font-size: 1.25rem; color: var(--text-muted); line-height: 1.6; max-width: 600px; margin: 0 auto 40px auto; }
+
+        /* --- 4. GRID --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 100px 0; }
+        .section-title { margin-bottom: 80px; text-align: center; }
         .section-title h2 { font-size: 2.5rem; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px; }
         .section-title p { color: var(--text-muted); font-size: 1.1rem; }
-
+        
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
 
-        /* --- 5. CARDS PREMIUM (CERTIFICAÇÕES) --- */
+        /* --- 5. LOGOS ANBIMA 3D (CSS PURO) --- */
+        /* Isso recria o cubo da ANBIMA sem precisar de imagem */
+        .anbima-cube {
+            width: 80px; height: 80px; margin: 0 auto 30px auto;
+            position: relative; perspective: 1000px;
+            transform-style: preserve-3d;
+            transform: rotateX(-15deg) rotateY(25deg);
+            transition: transform 0.5s ease;
+        }
+        .cert-card:hover .anbima-cube { transform: rotateX(-5deg) rotateY(45deg) scale(1.1); }
+        
+        .face { position: absolute; width: 100%; height: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .face-front { transform: translateZ(20px); }
+        .face-side { width: 40px; transform: rotateY(90deg) translateZ(60px); }
+        
+        /* Cores Específicas */
+        .cube-cpa .face-front { background: var(--cpa-face); }
+        .cube-cpa .face-side { background: var(--cpa-side); }
+        
+        .cube-cpror .face-front { background: var(--cpror-face); }
+        .cube-cpror .face-side { background: var(--cpror-side); }
+        
+        .cube-cproi .face-front { background: var(--cproi-face); }
+        .cube-cproi .face-side { background: var(--cproi-side); }
+
         .cert-card {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
-            position: relative; overflow: hidden;
-            /* Efeito "Bloqueado" Elegante */
-            opacity: 0.6; filter: grayscale(100%);
+            background: var(--bg-card); border-radius: var(--radius); padding: 50px 30px;
+            text-align: center; box-shadow: var(--shadow-sm); transition: all 0.3s ease;
+            position: relative; overflow: hidden; opacity: 0.6; filter: grayscale(100%);
         }
-        .cert-card:hover { opacity: 1; filter: grayscale(0%); transform: translateY(-8px); box-shadow: var(--shadow-hover); }
-        
-        .cert-icon {
-            width: 80px; height: 80px; margin: 0 auto 24px auto;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: white; font-weight: 800; font-size: 1.5rem;
-        }
-        .cert-tag {
-            position: absolute; top: 20px; right: 20px;
-            background: #F3F4F6; color: #6B7280; font-size: 0.7rem; font-weight: 700;
-            padding: 4px 10px; border-radius: 6px; text-transform: uppercase;
-        }
-        .cert-active .cert-tag { background: #DCFCE7; color: #166534; } /* Verde para Ativo */
+        .cert-card:hover { opacity: 1; filter: grayscale(0%); transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+        .cert-active { opacity: 1; filter: grayscale(0%); border: 2px solid var(--cpa-face); }
 
-        /* Cores ANBIMA */
-        .bg-cpa { background: var(--cpa-color); box-shadow: 0 10px 20px rgba(101, 163, 13, 0.3); }
-        .bg-cpror { background: var(--cpror-color); box-shadow: 0 10px 20px rgba(0, 71, 187, 0.3); }
-        .bg-cproi { background: var(--cproi-color); box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3); }
+        /* --- 6. ARTIGOS (GRID MODERNO) --- */
+        .article-card {
+            background: var(--bg-card); border-radius: 16px; padding: 30px;
+            box-shadow: var(--shadow-sm); transition: 0.3s; cursor: pointer;
+            display: flex; flex-direction: column; justify-content: space-between;
+            height: 100%; border: 1px solid transparent;
+        }
+        .article-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .article-cat { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+        .article-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; line-height: 1.3; }
+        .article-excerpt { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 20px; flex-grow: 1; }
+        .article-meta { font-size: 0.85rem; color: #9CA3AF; display: flex; align-items: center; gap: 6px; }
 
-        /* --- 6. CALCULADORAS CLEAN (ESTILO APPLE) --- */
-        .calc-wrapper {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            padding: 40px;
-            box-shadow: var(--shadow-sm);
-        }
-        .input-group { margin-bottom: 24px; }
-        .input-group label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
-        .input-field {
-            width: 100%; padding: 16px; border: 2px solid #F3F4F6; border-radius: 12px;
-            font-size: 1rem; font-family: var(--font-stack); transition: 0.2s;
-        }
-        .input-field:focus { outline: none; border-color: var(--accent); background: #fff; }
-        
-        .btn-calc {
-            width: 100%; background: var(--primary); color: white; border: none;
-            padding: 16px; border-radius: 12px; font-weight: 600; font-size: 1rem; cursor: pointer;
-            transition: 0.2s;
-        }
-        .btn-calc:hover { background: #000; }
-        
-        .result-box {
-            margin-top: 30px; padding: 24px; background: #F8FAFC; border-radius: 16px;
-            text-align: center; display: none; animation: fadeIn 0.5s;
-        }
-        .result-val { font-size: 2rem; font-weight: 800; color: var(--text-main); display: block; margin: 10px 0; letter-spacing: -1px; }
-        .result-text { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
-
-        /* --- 7. FOOTER CORPORATIVO (PRETO TOTAL) --- */
-        footer {
-            background: var(--primary); color: white;
-            padding: 80px 0; margin-top: 100px;
-        }
+        /* --- 7. FOOTER --- */
+        footer { background: var(--primary); color: white; padding: 100px 0; margin-top: 100px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; }
         .footer-brand h2 { font-size: 1.5rem; letter-spacing: -0.5px; margin-bottom: 16px; }
-        .footer-brand p { color: rgba(255,255,255,0.6); max-width: 300px; }
-        .footer-col h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 24px; }
         .footer-links li { list-style: none; margin-bottom: 12px; }
-        .footer-links a { color: white; text-decoration: none; font-weight: 500; transition: 0.2s; }
-        .footer-links a:hover { color: var(--accent); }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: 0.2s; }
+        .footer-links a:hover { color: white; }
 
-        /* Mobile */
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .grid-3, .grid-2, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
             .nav-links { display: none; }
         }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -189,93 +170,109 @@
         <div class="nav-container">
             <a href="#" class="logo">GP.Finance</a>
             <div class="nav-links">
-                <a href="#certificacoes">Roadmap</a>
-                <a href="#simuladores">Simuladores</a>
-                <a href="#tech">Projetos</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#artigos">Knowledge Base</a>
+                <a href="#tools">Ferramentas</a>
             </div>
             <a href="mailto:contato@gustavoponce.com" class="cta-button">Fale Comigo</a>
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="hero reveal">
         <div class="container">
             <span class="badge">Jovem Aprendiz & Dev</span>
             <h1>Tecnologia Bancária com Estratégia.</h1>
             <p>16 Anos. Estudante do IFPR. Focado em dominar a nova trilha de certificações ANBIMA (C-Pro) e unir a programação ao mercado financeiro.</p>
             <div style="display: flex; gap: 16px; justify-content: center;">
-                <a href="#simuladores" class="cta-button" style="background: var(--accent);">Testar Ferramentas</a>
-                <a href="#certificacoes" class="cta-button" style="background: white; color: var(--text-main); border: 1px solid #E5E7EB;">Ver Minha Jornada</a>
+                <a href="#tools" class="cta-button" style="background: var(--accent);">Testar Ferramentas</a>
+                <a href="#artigos" class="cta-button" style="background: white; color: var(--text-main); border: 1px solid #E5E7EB;">Ler Meus Artigos</a>
             </div>
         </div>
     </section>
 
-    <section id="certificacoes" class="section">
+    <section id="roadmap" class="section">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title reveal">
                 <h2>Roadmap de Competência</h2>
-                <p>Meu plano de carreira alinhado com a Nova Regra ANBIMA (2026).</p>
+                <p>A nova trilha da ANBIMA exige especialização. Este é meu plano.</p>
             </div>
             
             <div class="grid-3">
-                <div class="cert-card" style="opacity: 1; filter: grayscale(0%); border: 2px solid var(--cpa-color);">
-                    <div class="cert-tag cert-active">Em Andamento</div>
-                    <div class="cert-icon bg-cpa">CPA</div>
-                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">Nova CPA</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Certificação Profissional ANBIMA.<br>A base obrigatória.</p>
+                <div class="cert-card cert-active reveal">
+                    <div class="anbima-cube cube-cpa">
+                        <div class="face face-front">CPA</div>
+                        <div class="face face-side"></div>
+                    </div>
+                    <h3>Nova CPA</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">A Base Obrigatória.<br><strong>Status: Estudando</strong></p>
                 </div>
 
-                <div class="cert-card">
-                    <div class="cert-tag">Meta 2026</div>
-                    <div class="cert-icon bg-cpror">R</div>
-                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">C-Pro Relacionamento</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Especialização em Varejo e<br>Venda Consultiva.</p>
+                <div class="cert-card reveal">
+                    <div class="anbima-cube cube-cpror">
+                        <div class="face face-front">R</div>
+                        <div class="face face-side"></div>
+                    </div>
+                    <h3>C-Pro Relacionamento</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Especialização Comercial.<br><strong>Status: Meta 2026</strong></p>
                 </div>
 
-                <div class="cert-card">
-                    <div class="cert-tag">Futuro</div>
-                    <div class="cert-icon bg-cproi">I</div>
-                    <h3 style="font-size: 1.2rem; margin-bottom: 8px;">C-Pro Investimento</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Especialista Técnico em<br>Alocação de Ativos.</p>
+                <div class="cert-card reveal">
+                    <div class="anbima-cube cube-cproi">
+                        <div class="face face-front">I</div>
+                        <div class="face face-side"></div>
+                    </div>
+                    <h3>C-Pro Investimento</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Especialização Técnica.<br><strong>Status: Longo Prazo</strong></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="simuladores" class="section" style="background: #FFFFFF;">
+    <section id="artigos" class="section" style="background: #FFFFFF;">
         <div class="container">
-            <div class="section-title">
-                <h2>Consultoria Automatizada</h2>
-                <p>Ferramentas que desenvolvi para auxiliar na decisão do cliente.</p>
+            <div class="section-title reveal">
+                <h2>Knowledge Base</h2>
+                <p>Pesquisas sobre produtos, regulação e economia.</p>
+            </div>
+
+            <div class="grid-3" id="articles-container">
+                </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <button class="cta-button reveal" style="background: transparent; border: 1px solid #E5E7EB; color: var(--text-muted);">Carregar Mais (+42 Artigos)</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="section">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Simulador de Decisão</h2>
+                <p>Ferramenta desenvolvida para demonstrar venda consultiva.</p>
             </div>
 
             <div class="grid-2">
-                <div class="calc-wrapper">
-                    <div style="margin-bottom: 30px;">
-                        <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">Ferramenta Comercial</span>
-                        <h3 style="font-size: 1.8rem; margin-top: 8px;">Consórcio vs. Financiamento</h3>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Prove matematicamente a vantagem da taxa administrativa.</p>
+                <div class="calc-wrapper reveal" style="background: white; padding: 40px; border-radius: 24px; box-shadow: var(--shadow-sm);">
+                    <h3 style="margin-bottom: 20px;">Consórcio vs. Financiamento</h3>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:5px;">VALOR DO BEM</label>
+                        <input type="number" id="valorBem" value="50000" style="width:100%; padding:15px; border-radius:12px; border:1px solid #E5E7EB; font-size:1rem;">
                     </div>
-                    
-                    <div class="input-group">
-                        <label>Valor do Bem (R$)</label>
-                        <input type="number" id="valorBem" class="input-field" value="50000">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:5px;">PRAZO (MESES)</label>
+                        <input type="number" id="prazoMeses" value="60" style="width:100%; padding:15px; border-radius:12px; border:1px solid #E5E7EB; font-size:1rem;">
                     </div>
-                    <div class="input-group">
-                        <label>Prazo (Meses)</label>
-                        <input type="number" id="prazoMeses" class="input-field" value="60">
-                    </div>
-                    <button class="btn-calc" onclick="calcularConsorcio()">Comparar Custos</button>
-                    
-                    <div id="resConsorcio" class="result-box"></div>
+                    <button onclick="calcConsorcio()" style="width:100%; padding:15px; background:var(--primary); color:white; border:none; border-radius:12px; font-weight:600; cursor:pointer;">Calcular Economia</button>
+                    <div id="resConsorcio" style="margin-top:20px; padding:20px; background:#F8FAFC; border-radius:12px; text-align:center; display:none;"></div>
                 </div>
 
-                <div style="padding-top: 40px;">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Por que eu criei isso?</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 20px;">
-                        No dia a dia bancário, o cliente muitas vezes foca apenas na parcela e esquece o Custo Efetivo Total (CET).
+                <div class="reveal" style="display:flex; flex-direction:column; justify-content:center;">
+                    <h3 style="font-size:2rem; margin-bottom:20px;">Por que eu criei isso?</h3>
+                    <p style="color:var(--text-muted); margin-bottom:20px;">
+                        Como Jovem Aprendiz e futuro C-Pro R, entendo que o cliente precisa ver valor. 
                     </p>
-                    <p style="color: var(--text-muted);">
-                        Como futuro profissional C-Pro R, meu objetivo é usar a tecnologia para tangibilizar a economia. Este script em JavaScript simula um cenário de juros compostos (Financiamento) contra uma taxa linear (Consórcio) para dar argumentos técnicos à venda.
+                    <p style="color:var(--text-muted);">
+                        Este script em JavaScript não é apenas código; é um argumento de venda tangível que prova a eficiência da Taxa de Administração sobre os Juros Compostos.
                     </p>
                 </div>
             </div>
@@ -287,21 +284,19 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h2>Gustavo Ponce.</h2>
-                    <p>Unindo Lógica de Programação e Estratégia Financeira para a nova era bancária.</p>
+                    <p>Unindo Lógica de Programação e Estratégia Financeira.</p>
                     <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026. Telêmaco Borba - PR.</p>
                 </div>
-                
                 <div class="footer-col">
-                    <h3>Navegação</h3>
+                    <h3 style="color:rgba(255,255,255,0.4); font-size:0.8rem; text-transform:uppercase; margin-bottom:20px;">Menu</h3>
                     <ul class="footer-links">
-                        <li><a href="#certificacoes">Roadmap ANBIMA</a></li>
-                        <li><a href="#simuladores">Simuladores</a></li>
-                        <li><a href="#tech">Projetos Tech</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="#artigos">Knowledge Base</a></li>
+                        <li><a href="#tools">Ferramentas</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
-                    <h3>Contato</h3>
+                    <h3 style="color:rgba(255,255,255,0.4); font-size:0.8rem; text-transform:uppercase; margin-bottom:20px;">Social</h3>
                     <ul class="footer-links">
                         <li><a href="#">LinkedIn</a></li>
                         <li><a href="#">GitHub</a></li>
@@ -313,39 +308,60 @@
     </footer>
 
     <script>
-        function calcularConsorcio() {
-            const valor = parseFloat(document.getElementById('valorBem').value);
-            const meses = parseInt(document.getElementById('prazoMeses').value);
-            
-            // Premissas: Financiamento 1.6% a.m (Composto) vs Consórcio 16% taxa total (Linear)
-            const taxaFinanc = 0.016; 
-            const fatorFinanc = (taxaFinanc) / (1 - Math.pow(1 + taxaFinanc, -meses));
-            const totalFinanc = (valor * fatorFinanc) * meses;
-            
-            const totalConsorcio = valor * 1.16;
-            const economia = totalFinanc - totalConsorcio;
+        // 1. ANIMAÇÃO SCROLL REVEAL
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Chama uma vez pra carregar o topo
 
-            const box = document.getElementById('resConsorcio');
-            box.style.display = 'block';
-            box.innerHTML = `
-                <span class="result-text">Economia estimada com Consórcio:</span>
-                <span class="result-val" style="color: #166534;">R$ ${economia.toLocaleString('pt-BR', {maximumFractionDigits: 0})}</span>
-                <p class="result-text" style="margin-top: 10px; font-size: 0.85rem;">
-                    Financiamento: R$ ${totalFinanc.toLocaleString('pt-BR', {maximumFractionDigits: 0})} <br>
-                    Consórcio: R$ ${totalConsorcio.toLocaleString('pt-BR', {maximumFractionDigits: 0})}
-                </p>
+        // 2. BANCO DE DADOS DE ARTIGOS (FAKE)
+        const articles = [
+            { cat: "Matemática Financeira", title: "A Matemática Oculta do Consórcio", desc: "Por que a taxa de administração vence os juros compostos em cenários de Selic alta.", date: "24 Jan 2026" },
+            { cat: "Renda Fixa", title: "Marcação a Mercado na Prática", desc: "Entenda por que seu título IPCA+ pode estar negativo hoje e como usar isso a seu favor.", date: "20 Jan 2026" },
+            { cat: "Regulação", title: "O Impacto da C-Pro no Varejo", desc: "Como a nova estrutura da ANBIMA muda o perfil de contratação dos grandes bancos.", date: "15 Jan 2026" }
+        ];
+
+        // Renderiza Artigos
+        const artContainer = document.getElementById('articles-container');
+        articles.forEach(art => {
+            artContainer.innerHTML += `
+                <div class="article-card reveal">
+                    <div class="article-cat">${art.cat}</div>
+                    <div class="article-title">${art.title}</div>
+                    <div class="article-excerpt">${art.desc}</div>
+                    <div class="article-meta"><i data-feather="clock" style="width:14px"></i> ${art.date}</div>
+                </div>
+            `;
+        });
+
+        // 3. CÁLCULO CONSÓRCIO
+        function calcConsorcio() {
+            const v = parseFloat(document.getElementById('valorBem').value);
+            const m = parseInt(document.getElementById('prazoMeses').value);
+            const fin = v * 0.016 / (1 - Math.pow(1.016, -m)) * m;
+            const con = v * 1.16;
+            const eco = fin - con;
+            
+            const res = document.getElementById('resConsorcio');
+            res.style.display = 'block';
+            res.innerHTML = `
+                <div style="font-size:0.9rem; color:#6B7280; margin-bottom:10px;">Economia Gerada:</div>
+                <div style="font-size:2rem; font-weight:800; color:#166534; line-height:1;">R$ ${Math.round(eco).toLocaleString('pt-BR')}</div>
+                <div style="font-size:0.8rem; margin-top:10px; color:#6B7280;">
+                    Financiamento: R$ ${Math.round(fin).toLocaleString('pt-BR')} <br>
+                    Consórcio: R$ ${Math.round(con).toLocaleString('pt-BR')}
+                </div>
             `;
         }
-
-        // Animação suave no scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
         
         feather.replace();
     </script>
