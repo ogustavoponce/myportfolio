@@ -17,17 +17,11 @@
             --glass-hover: rgba(255, 255, 255, 0.08);
             --border: rgba(255, 255, 255, 0.1);
             --border-glow: rgba(255, 255, 255, 0.3);
-            
             --text-main: #FFFFFF;
-            --text-muted: #86868b; /* Apple Gray */
-            
-            /* Aurora Gradients */
-            --aurora-1: #2997ff; /* Apple Blue */
-            --aurora-2: #9e64ed; /* Siri Purple */
-            --aurora-3: #43c6ac; /* Mint */
-            
+            --text-muted: #86868b;
+            --aurora-1: #2997ff; 
             --radius: 24px;
-            --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-stack: 'Inter', -apple-system, sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -41,153 +35,165 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- BACKGROUND AURORA ANIMATION --- */
+        /* --- 1. BACKGROUND AURORA VIVA --- */
         .ambient-light {
-            position: fixed; top: -20%; left: -20%; width: 140%; height: 140%;
+            position: fixed; top: -30%; left: -20%; width: 150%; height: 150%;
             background: 
-                radial-gradient(circle at 50% 50%, rgba(41, 151, 255, 0.08), transparent 40%),
-                radial-gradient(circle at 20% 80%, rgba(158, 100, 237, 0.08), transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(67, 198, 172, 0.05), transparent 40%);
-            filter: blur(60px); z-index: -1; animation: aurora 20s infinite alternate;
+                radial-gradient(circle at 50% 50%, rgba(41, 151, 255, 0.12), transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(158, 100, 237, 0.12), transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(67, 198, 172, 0.08), transparent 40%);
+            filter: blur(80px); z-index: -1; 
+            animation: aurora-move 15s infinite alternate ease-in-out;
         }
-        @keyframes aurora {
-            0% { transform: scale(1); } 100% { transform: scale(1.1) rotate(5deg); }
+        @keyframes aurora-move {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.1) translate(20px, -20px); }
         }
 
-        /* --- HEADER (Frosted Glass) --- */
+        /* --- 2. ANIMAÇÕES DE SCROLL (OBSERVER) --- */
+        .hidden { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .show { opacity: 1; transform: translateY(0); }
+        
+        /* Delays para efeito cascata */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+
+        /* --- HEADER --- */
         nav {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-20px);
+            opacity: 0; animation: nav-slide-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
             width: 90%; max-width: 1000px; z-index: 1000;
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 100px; padding: 12px 24px;
+            background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: 100px; padding: 12px 24px;
             display: flex; justify-content: space-between; align-items: center;
         }
+        @keyframes nav-slide-in { to { transform: translateX(-50%) translateY(0); opacity: 1; } }
+
         .logo { font-weight: 700; font-size: 1rem; color: white; text-decoration: none; letter-spacing: -0.5px; }
         .nav-links { display: flex; gap: 24px; }
-        .nav-links a {
-            text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 500;
-            transition: 0.3s;
-        }
-        .nav-links a:hover { color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.85rem; font-weight: 500; transition: 0.3s; position: relative; }
+        .nav-links a:hover { color: white; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 1px; background: white; transition: 0.3s; transform: translateX(-50%); }
+        .nav-links a:hover::after { width: 100%; }
         
-        .cta-header {
-            background: white; color: black; padding: 8px 20px; border-radius: 100px;
-            font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: 0.3s;
-        }
-        .cta-header:hover { transform: scale(1.05); }
+        .cta-header { background: white; color: black; padding: 8px 20px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .cta-header:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(255,255,255,0.4); }
 
-        /* --- HERO (Apple Style Typography) --- */
-        .hero {
-            min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 0 24px; position: relative;
-        }
+        /* --- HERO --- */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 24px; position: relative; }
         
         .badge-ai {
             background: linear-gradient(90deg, rgba(41,151,255,0.2), rgba(158,100,237,0.2));
-            border: 1px solid rgba(255,255,255,0.2); color: #fff;
-            padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;
-            letter-spacing: 1px; margin-bottom: 30px;
-            box-shadow: 0 0 20px rgba(41,151,255,0.3);
-            animation: pulse-glow 3s infinite;
+            border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 6px 16px; border-radius: 50px;
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 30px;
+            animation: hero-fade 1s ease-out forwards; opacity: 0; transform: translateY(20px);
         }
-        @keyframes pulse-glow { 0% { box-shadow: 0 0 20px rgba(41,151,255,0.1); } 50% { box-shadow: 0 0 30px rgba(158,100,237,0.3); } 100% { box-shadow: 0 0 20px rgba(41,151,255,0.1); } }
-
+        
         .hero h1 {
             font-size: 5rem; line-height: 1.05; font-weight: 700; letter-spacing: -3px;
             background: linear-gradient(180deg, #fff 0%, #86868b 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             margin-bottom: 24px; max-width: 900px;
+            animation: hero-fade 1s ease-out 0.2s forwards; opacity: 0; transform: translateY(20px);
         }
         
         .hero p {
-            font-size: 1.5rem; color: var(--text-muted); font-weight: 400;
-            max-width: 600px; margin-bottom: 50px;
+            font-size: 1.5rem; color: var(--text-muted); font-weight: 400; max-width: 600px; margin-bottom: 50px;
+            animation: hero-fade 1s ease-out 0.4s forwards; opacity: 0; transform: translateY(20px);
         }
         
-        .hero-btns { display: flex; gap: 16px; }
+        .hero-btns { display: flex; gap: 16px; animation: hero-fade 1s ease-out 0.6s forwards; opacity: 0; transform: translateY(20px); }
+        
+        @keyframes hero-fade { to { opacity: 1; transform: translateY(0); } }
+
         .btn-apple {
-            background: #2997ff; color: white; padding: 14px 32px; border-radius: 100px;
-            font-size: 1rem; font-weight: 600; text-decoration: none; transition: 0.3s;
+            background: #2997ff; color: white; padding: 14px 32px; border-radius: 100px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: 0.3s; position: relative; overflow: hidden;
         }
-        .btn-apple:hover { background: #007aff; box-shadow: 0 0 30px rgba(0,122,255,0.4); }
+        .btn-apple::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-apple:hover::before { left: 100%; }
+        .btn-apple:hover { transform: scale(1.03); box-shadow: 0 0 30px rgba(41,151,255,0.5); }
         
         .btn-glass {
-            background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: white;
-            padding: 14px 32px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.1);
-            font-size: 1rem; font-weight: 600; text-decoration: none; transition: 0.3s;
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); color: white; padding: 14px 32px;
+            border-radius: 100px; border: 1px solid rgba(255,255,255,0.1); font-size: 1rem; font-weight: 600; text-decoration: none; transition: 0.3s;
         }
-        .btn-glass:hover { background: rgba(255,255,255,0.2); border-color: white; }
+        .btn-glass:hover { background: rgba(255,255,255,0.15); border-color: white; }
 
-        /* --- CARDS (Glassmorphism) --- */
+        /* --- CARDS & GRID --- */
         .section { padding: 120px 0; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
         .section-header { text-align: center; margin-bottom: 80px; }
-        .section-header h2 { font-size: 3rem; letter-spacing: -1.5px; margin-bottom: 16px; }
-        .section-header p { font-size: 1.2rem; color: var(--text-muted); }
-
+        .section-header h2 { font-size: 3rem; letter-spacing: -1.5px; margin-bottom: 16px; color: white; }
+        
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 0 24px; }
         .grid-2 { display: grid; grid-template-columns: 2fr 1.2fr; gap: 30px; padding: 0 24px; }
 
         .card {
             background: var(--glass); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
             border: 1px solid var(--border); border-radius: 24px; padding: 40px 30px;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative; overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); position: relative; overflow: hidden;
         }
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            opacity: 0.5;
-        }
-        .card:hover {
-            transform: scale(1.02); border-color: var(--border-glow);
-            background: var(--glass-hover);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
+        .card:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(255,255,255,0.3); background: var(--glass-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
-        /* Certificações */
-        .cert-icon {
-            font-size: 2rem; font-weight: 800; margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff, #86868b);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        /* --- CUBOS 3D ANIMADOS (ANBIMA) --- */
+        .anbima-cube {
+            width: 80px; height: 80px; margin: 0 auto 30px auto; position: relative; perspective: 1000px; transform-style: preserve-3d;
+            animation: cube-spin 8s infinite linear; /* Rotação automática */
         }
-        .cert-status {
-            position: absolute; top: 20px; right: 20px; font-size: 0.7rem; font-weight: 700;
-            padding: 4px 10px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px;
+        @keyframes cube-spin { 
+            0% { transform: rotateX(-15deg) rotateY(0deg); }
+            100% { transform: rotateX(-15deg) rotateY(360deg); }
         }
-        .st-active { background: rgba(132, 204, 22, 0.2); color: #a3e635; border: 1px solid rgba(132, 204, 22, 0.3); }
+        .card:hover .anbima-cube { animation-duration: 2s; } /* Gira rápido no hover */
+        
+        .face { position: absolute; width: 100%; height: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; font-size: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.2); backface-visibility: visible; opacity: 0.9; }
+        
+        /* Construção do Cubo (Simplificado para 2 faces visíveis na rotação padrão) */
+        .face-front { transform: translateZ(40px); }
+        .face-back { transform: rotateY(180deg) translateZ(40px); }
+        .face-right { transform: rotateY(90deg) translateZ(40px); }
+        .face-left { transform: rotateY(-90deg) translateZ(40px); }
+        
+        /* Cores */
+        .cube-cpa .face { background: linear-gradient(135deg, #84cc16, #4d7c0f); border: 1px solid rgba(255,255,255,0.2); }
+        .cube-cpror .face { background: linear-gradient(135deg, #1d4ed8, #1e3a8a); border: 1px solid rgba(255,255,255,0.2); }
+        .cube-cproi .face { background: linear-gradient(135deg, #f97316, #c2410c); border: 1px solid rgba(255,255,255,0.2); }
+
+        .cert-status { position: absolute; top: 20px; right: 20px; font-size: 0.7rem; font-weight: 700; padding: 4px 10px; border-radius: 50px; text-transform: uppercase; letter-spacing: 1px; }
+        .st-active { background: rgba(132, 204, 22, 0.2); color: #a3e635; box-shadow: 0 0 10px rgba(132, 204, 22, 0.2); }
         .st-future { background: rgba(255, 255, 255, 0.1); color: #86868b; }
 
-        /* --- FERRAMENTAS (Inputs Estilo macOS) --- */
+        /* --- FERRAMENTAS --- */
         .tool-panel {
-            background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(40px);
-            border: 1px solid var(--border); border-radius: 32px; padding: 40px;
+            background: rgba(20, 20, 20, 0.6); backdrop-filter: blur(40px); border: 1px solid var(--border); border-radius: 32px; padding: 40px;
+            transition: 0.3s;
         }
+        .tool-panel:hover { border-color: rgba(41, 151, 255, 0.4); box-shadow: 0 0 30px rgba(41, 151, 255, 0.1); }
+
         .input-label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
         .mac-input {
-            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border);
-            border-radius: 12px; padding: 16px; color: white; font-size: 1.1rem;
-            margin-bottom: 24px; transition: 0.3s;
+            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 12px; padding: 16px; color: white; font-size: 1.1rem; margin-bottom: 24px; transition: 0.3s;
         }
-        .mac-input:focus { outline: none; border-color: #2997ff; background: rgba(41, 151, 255, 0.05); }
+        .mac-input:focus { outline: none; border-color: #2997ff; background: rgba(41, 151, 255, 0.05); transform: translateY(-2px); }
         
         .btn-calc {
-            width: 100%; background: white; color: black; border: none; padding: 16px;
-            border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            width: 100%; background: white; color: black; border: none; padding: 16px; border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: 0.3s;
         }
-        .btn-calc:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+        .btn-calc:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255,255,255,0.5); }
         
         .result-display {
-            margin-top: 30px; padding: 24px; border-radius: 16px;
+            margin-top: 30px; padding: 24px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); display: none; text-align: center;
             background: linear-gradient(135deg, rgba(41, 151, 255, 0.1), rgba(158, 100, 237, 0.1));
-            border: 1px solid rgba(255,255,255,0.1); display: none; text-align: center;
+            animation: pop-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        @keyframes pop-in { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
         /* --- FOOTER --- */
-        footer { border-top: 1px solid var(--border); padding: 80px 24px; text-align: center; margin-top: 100px; }
-        .footer-logo { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; display: block; color: white; text-decoration: none; }
+        footer { border-top: 1px solid var(--border); padding: 80px 24px; text-align: center; margin-top: 100px; position: relative; z-index: 2; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
         .footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; }
         .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
         .footer-links a:hover { color: white; }
@@ -225,29 +231,44 @@
     </section>
 
     <section id="roadmap" class="section">
-        <div class="section-header">
+        <div class="section-header hidden">
             <h2>Roadmap de Competência</h2>
             <p>Trilha de certificação oficial ANBIMA (2026).</p>
         </div>
         
         <div class="grid-3">
-            <div class="card" style="border: 1px solid rgba(132, 204, 22, 0.4);">
+            <div class="card hidden delay-100" style="border: 1px solid rgba(132, 204, 22, 0.4);">
                 <span class="cert-status st-active">Em Andamento</span>
-                <div class="cert-icon">CPA</div>
+                <div class="anbima-cube cube-cpa">
+                    <div class="face face-front">CPA</div>
+                    <div class="face face-back"></div>
+                    <div class="face face-right"></div>
+                    <div class="face face-left"></div>
+                </div>
                 <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Nova CPA</h3>
                 <p style="color: var(--text-muted); font-size: 0.9rem;">Certificação Profissional ANBIMA. A base obrigatória do sistema.</p>
             </div>
             
-            <div class="card" style="opacity: 0.7;">
+            <div class="card hidden delay-200" style="opacity: 0.7;">
                 <span class="cert-status st-future">Meta 2026</span>
-                <div class="cert-icon">R</div>
+                <div class="anbima-cube cube-cpror">
+                    <div class="face face-front">R</div>
+                    <div class="face face-back"></div>
+                    <div class="face face-right"></div>
+                    <div class="face face-left"></div>
+                </div>
                 <h3 style="font-size: 1.5rem; margin-bottom: 10px;">C-Pro Relacionamento</h3>
                 <p style="color: var(--text-muted); font-size: 0.9rem;">Especialização em Varejo, Alta Renda e Venda Consultiva.</p>
             </div>
             
-            <div class="card" style="opacity: 0.5;">
+            <div class="card hidden delay-300" style="opacity: 0.5;">
                 <span class="cert-status st-future">Longo Prazo</span>
-                <div class="cert-icon">I</div>
+                <div class="anbima-cube cube-cproi">
+                    <div class="face face-front">I</div>
+                    <div class="face face-back"></div>
+                    <div class="face face-right"></div>
+                    <div class="face face-left"></div>
+                </div>
                 <h3 style="font-size: 1.5rem; margin-bottom: 10px;">C-Pro Investimento</h3>
                 <p style="color: var(--text-muted); font-size: 0.9rem;">Especialista Técnico em Alocação de Ativos e Risco.</p>
             </div>
@@ -256,11 +277,12 @@
 
     <section id="intelligence" class="section">
         <div class="grid-2">
-            <div class="tool-panel">
+            <div class="tool-panel hidden">
                 <div style="display:flex; align-items:center; gap:10px; margin-bottom:30px;">
-                    <div style="width:10px; height:10px; background:#2997ff; border-radius:50%; box-shadow:0 0 10px #2997ff;"></div>
+                    <div style="width:10px; height:10px; background:#2997ff; border-radius:50%; box-shadow:0 0 10px #2997ff; animation: pulse 2s infinite;"></div>
                     <span style="font-size:0.8rem; font-weight:700; letter-spacing:1px; color:#2997ff;">FERRAMENTA COMERCIAL</span>
                 </div>
+                @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
                 
                 <h3 style="font-size:2rem; margin-bottom:10px;">Consórcio vs. Financiamento</h3>
                 <p style="color:var(--text-muted); margin-bottom:40px;">Algoritmo comparativo de Custo Efetivo Total.</p>
@@ -277,17 +299,13 @@
                 </div>
                 
                 <button class="btn-calc" onclick="calcConsorcio()">Calcular Economia</button>
-                
                 <div id="resConsorcio" class="result-display"></div>
             </div>
             
-            <div style="display:flex; flex-direction:column; justify-content:center; padding-left:20px;">
+            <div class="hidden delay-100" style="display:flex; flex-direction:column; justify-content:center; padding-left:20px;">
                 <h3 style="font-size:2.5rem; margin-bottom:20px; letter-spacing:-1px;">Dados.<br>Não Palpites.</h3>
                 <p style="font-size:1.1rem; color:var(--text-muted); margin-bottom:20px;">
                     Como futuro profissional C-Pro, meu atendimento é baseado em matemática.
-                </p>
-                <p style="font-size:1.1rem; color:var(--text-muted);">
-                    Desenvolvi este script para demonstrar ao cliente, em tempo real, como a taxa administrativa vence os juros compostos no longo prazo.
                 </p>
                 <div style="margin-top:40px; display:flex; gap:10px; align-items:center; opacity:0.6;">
                     <i data-feather="code"></i>
@@ -298,25 +316,25 @@
     </section>
 
     <section id="projects" class="section">
-        <div class="section-header">
+        <div class="section-header hidden">
             <h2>Engenharia Financeira</h2>
             <p>Softwares desenvolvidos para resolver dores reais.</p>
         </div>
         <div class="grid-3">
-            <div class="card">
+            <div class="card hidden delay-100">
                 <h3 style="font-size:1.2rem; margin-bottom:10px;">Thimanni SaaS</h3>
                 <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Gestão de fluxo de caixa para PJ. Reduz inadimplência via automação.</p>
-                <a href="#" style="color:#2997ff; text-decoration:none; font-weight:600; font-size:0.9rem;">Ver Código &rarr;</a>
+                <a href="#" style="color:#2997ff; text-decoration:none; font-weight:600;">Ver Código &rarr;</a>
             </div>
-            <div class="card">
+            <div class="card hidden delay-200">
                 <h3 style="font-size:1.2rem; margin-bottom:10px;">Nexus BI</h3>
                 <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Dashboard de inteligência comercial para rastreamento de CAC e LTV.</p>
-                <a href="#" style="color:#2997ff; text-decoration:none; font-weight:600; font-size:0.9rem;">Ver Código &rarr;</a>
+                <a href="#" style="color:#2997ff; text-decoration:none; font-weight:600;">Ver Código &rarr;</a>
             </div>
-            <div class="card">
+            <div class="card hidden delay-300">
                 <h3 style="font-size:1.2rem; margin-bottom:10px;">Validador LCI</h3>
                 <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Script Python para comparação de rentabilidade líquida (Isento vs. Tributado).</p>
-                <a href="#" style="color:#2997ff; text-decoration:none; font-weight:600; font-size:0.9rem;">Ver Código &rarr;</a>
+                <a href="#" style="color:#2997ff; text-decoration:none; font-weight:600;">Ver Código &rarr;</a>
             </div>
         </div>
     </section>
@@ -332,13 +350,24 @@
     </footer>
 
     <script>
+        // --- 1. OBSERVER PARA ANIMAÇÃO NO SCROLL ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        // --- 2. LÓGICA CALCULADORA ---
         function calcConsorcio() {
             const v = parseFloat(document.getElementById('valorBem').value);
             const m = parseInt(document.getElementById('prazoMeses').value);
             
-            // Financiamento: 1.6% a.m Composto
             const fin = v * 0.016 / (1 - Math.pow(1.016, -m)) * m;
-            // Consórcio: 16% taxa total (exemplo)
             const con = v * 1.16;
             const eco = fin - con;
             
