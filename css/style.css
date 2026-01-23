@@ -23,7 +23,7 @@
 
 body {
     background-color: var(--bg-page);
-    /* Padrão de Pontos (Dot Grid) para ar técnico */
+    /* Padrão de Pontos (Dot Grid) */
     background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
     background-size: 24px 24px;
     color: var(--text-primary);
@@ -84,7 +84,7 @@ body {
 .mobile-menu-btn { display: none; background: none; border: none; font-size: 24px; cursor: pointer; }
 
 /* --- BENTO GRID LAYOUT --- */
-#app-content { padding-top: 40px; padding-bottom: 80px; }
+#app-content { padding-top: 40px; padding-bottom: 60px; }
 
 .bento-grid {
     display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;
@@ -134,10 +134,30 @@ p { font-size: 1rem; color: var(--text-secondary); max-width: 600px; }
 }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-/* Footer */
-footer { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-subtle); font-size: 0.9rem; color: var(--text-secondary); }
-footer ul { list-style: none; line-height: 2; }
-footer a { color: var(--text-primary); text-decoration: none; font-weight: 500; }
+/* --- FOOTER AZUL ROYAL (O Destaque) --- */
+footer {
+    margin-top: 60px;
+    padding: 60px;
+    background-color: var(--accent); /* O Azul Royal */
+    color: white;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.3); /* Sombra azulada */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Detalhe de fundo no footer */
+footer::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 20px 20px; opacity: 0.3; pointer-events: none;
+}
+
+footer h2, footer h3 { color: white !important; }
+footer p { color: rgba(255,255,255,0.8); }
+footer ul { list-style: none; line-height: 2.2; }
+footer a { color: rgba(255,255,255,0.9); text-decoration: none; font-weight: 500; transition: opacity 0.2s; }
+footer a:hover { color: white; text-decoration: underline; }
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -146,4 +166,5 @@ footer a { color: var(--text-primary); text-decoration: none; font-weight: 500; 
     .mobile-menu-btn { display: block; }
     .nav-links.show { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; width: 100%; background: white; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
     .top-bar { display: none; }
+    footer { padding: 30px; }
 }

@@ -2,24 +2,19 @@ const app = {
     data: null,
 
     init: async () => {
-        // 1. Renderiza Skeleton (Carregamento falso para dar peso)
         app.renderSkeleton();
-        
-        // 2. Busca Cotações Reais (AwesomeAPI)
         app.fetchMarketData();
 
-        // 3. Simula tempo de processamento e carrega dados
         setTimeout(async () => {
             try {
                 const response = await fetch('data/db.json');
                 app.data = await response.json();
-                app.render('home'); // Renderiza Home por padrão
+                app.render('home'); 
             } catch (error) {
                 console.error("Erro ao carregar dados:", error);
             }
         }, 800);
 
-        // 4. Lógica de Navegação (Menu)
         document.querySelectorAll('.nav-item').forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -30,12 +25,10 @@ const app = {
         });
     },
 
-    // Busca Dólar e Euro em tempo real
     fetchMarketData: async () => {
         try {
             const res = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL');
             const data = await res.json();
-            
             if(document.getElementById('val-usd')) {
                 document.getElementById('val-usd').innerText = parseFloat(data.USDBRL.bid).toFixed(2);
                 document.getElementById('val-eur').innerText = parseFloat(data.EURBRL.bid).toFixed(2);
@@ -46,7 +39,6 @@ const app = {
         }
     },
 
-    // Skeleton Screen (Placeholder cinza)
     renderSkeleton: () => {
         const grid = `
             <div class="bento-grid" style="opacity:0.6">
@@ -59,13 +51,11 @@ const app = {
         document.getElementById('app-content').innerHTML = grid;
     },
 
-    // Renderizador Principal
     render: (view) => {
         const container = document.getElementById('app-content');
         const d = app.data;
         let html = '';
 
-        // --- VIEW: DASHBOARD (HOME) ---
         if (view === 'home') {
             html = `
                 <div class="bento-grid">
@@ -77,7 +67,6 @@ const app = {
                             <button class="btn-contact" onclick="app.render('tech')">Ver Portfólio Técnico</button>
                         </div>
                     </div>
-
                     <div class="tile col-4" style="background:var(--text-primary); color:white;">
                         <h3 style="color:#94a3b8">Core Skills</h3>
                         <ul style="list-style:none; margin-top:20px;">
@@ -92,13 +81,11 @@ const app = {
                             </li>
                         </ul>
                     </div>
-
                     <div class="tile col-6">
                         <h3>Último Projeto</h3>
                         <h2>${d.tech[0].title}</h2>
                         <p style="font-size:0.9rem">${d.tech[0].details}</p>
                     </div>
-
                     <div class="tile col-6">
                         <h3>Visão de Mercado</h3>
                         <p>"${d.finance.macro_view}"</p>
@@ -107,7 +94,6 @@ const app = {
             `;
         }
 
-        // --- VIEW: FINANCE ---
         if (view === 'finance') {
             html = `
                 <div class="bento-grid">
@@ -115,7 +101,6 @@ const app = {
                         <h3>Tese de Investimento</h3>
                         <h1>${d.finance.thesis}</h1>
                     </div>
-                    
                     ${d.finance.portfolio.map(p => `
                         <div class="tile col-6">
                             <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
@@ -130,7 +115,6 @@ const app = {
             `;
         }
 
-        // --- VIEW: TECH ---
         if (view === 'tech') {
             html = `
                 <div class="bento-grid">
@@ -138,7 +122,6 @@ const app = {
                         <h1>Engenharia de Software</h1>
                         <p>Desenvolvimento de soluções focadas em estabilidade e segurança.</p>
                     </div>
-
                     ${d.tech.map(t => `
                         <div class="tile col-4">
                             <span class="tech-pill" style="background:#EFF6FF; color:var(--accent)">${t.hook}</span>
@@ -154,12 +137,11 @@ const app = {
             `;
         }
 
-        // Renderiza e adiciona Footer
         container.innerHTML = html + app.renderFooter();
-        feather.replace(); // Ícones
+        feather.replace();
     },
 
-    // Footer Gerado Automaticamente
+    // Footer Azul Royal
     renderFooter: () => {
         const d = app.data;
         return `
@@ -167,7 +149,7 @@ const app = {
                 <div class="bento-grid">
                     <div class="col-4">
                         <h2>${d.profile.name}</h2>
-                        <p style="font-size:0.8rem; margin-top:10px">
+                        <p style="margin-top:10px">
                             ${d.profile.location}<br>
                             &copy; 2026. All rights reserved.
                         </p>
@@ -184,8 +166,8 @@ const app = {
                         <h3>Conecte-se</h3>
                         <ul>
                             <li><a href="mailto:${d.profile.social.email}">Email Corporativo</a></li>
-                            <li><a href="https://${d.profile.social.linkedin}">LinkedIn</a></li>
-                            <li><a href="https://${d.profile.social.github}">GitHub</a></li>
+                            <li><a href="https://${d.profile.social.linkedin}" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://${d.profile.social.github}" target="_blank">GitHub</a></li>
                         </ul>
                     </div>
                 </div>
@@ -194,5 +176,4 @@ const app = {
     }
 };
 
-// Iniciar Aplicação
 document.addEventListener('DOMContentLoaded', app.init);
