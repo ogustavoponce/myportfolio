@@ -1,70 +1,65 @@
 {
   "profile": {
     "name": "Gustavo Ponce",
-    "headline": "Desenvolvimento de Software aplicado à Eficiência de Capital.",
-    "about": "Profissional focado na intersecção entre Engenharia de Dados e Mercado Financeiro. Utilizo tecnologia para criar automações, mitigar riscos operacionais e otimizar a análise de investimentos.",
-    "location": "Brasil • Remote",
-    "status": "Disponível para Projetos",
+    "headline": "Onde a Tecnologia encontra a Eficiência Bancária.",
+    "subheadline": "16 Anos. Jovem Aprendiz. Desenvolvedor Fullstack. Preparando-me hoje para ser o Gerente que o mercado exigirá amanhã.",
+    "about": "Muitos veem a tecnologia e o mercado financeiro como mundos distintos. Eu vejo como uma coisa só. Enquanto curso Técnico em Informática no IFPR e atuo como Jovem Aprendiz, percebi uma lacuna no mercado: profissionais que entendem de vendas, mas travam na tecnologia; ou desenvolvedores que sabem codar, mas não entendem de juros e amortização. Minha missão é ser o híbrido. Estou tirando a CPA-20 para dominar os produtos, e uso Python/JS para dominar os dados. Este portfólio não é sobre o que eu sei fazer, é sobre os problemas que eu posso resolver.",
+    "location": "Brasil • Presencial & Remote",
+    "status": "Foco: CPA-20 & C_PRO",
     "social": {
       "github": "gustavoponce",
       "linkedin": "gustavoponce",
-      "email": "business@gustavoponce.com"
+      "email": "contato@gustavoponce.com"
     }
   },
   "finance": {
-    "thesis": "Alocação baseada em Convexidade: Proteção de capital principal em Renda Fixa High Grade combinada com exposição assimétrica em tecnologia e eficiência bancária.",
-    "macro_view": "Cenário de juros reais elevados favorece acumulação em pós-fixados e cautela com Equity.",
+    "thesis": "Estratégia baseada em Ciclos Econômicos: Proteção de capital em momentos de juros altos (Renda Fixa) e exposição inteligente em ativos reais (Consórcios e FIIs) para alavancagem.",
+    "macro_view": "O cliente bancário mudou. Ele não quer apenas rentabilidade, ele quer entender a lógica do produto. Meu papel é traduzir 'Taxas' em 'Sonhos Realizáveis'.",
     "portfolio": [
       {
-        "asset": "Soberanos (IPCA+)",
-        "ticker": "NTN-B 2035",
-        "allocation": "45%",
-        "rationale": "Proteção contra inflação e garantia de juro real acima de 6%."
+        "asset": "Segurança",
+        "ticker": "Renda Fixa IPCA+",
+        "allocation": "50%",
+        "rationale": "Garantia de poder de compra no longo prazo."
       },
       {
-        "asset": "Real Estate (FIIs)",
-        "ticker": "Carteira High Yield",
-        "allocation": "25%",
-        "rationale": "Geração de fluxo de caixa recorrente isento de tributação."
+        "asset": "Alavancagem",
+        "ticker": "Consórcio Estratégico",
+        "allocation": "30%",
+        "rationale": "Estratégia de alavancagem patrimonial inteligente e isenção fiscal."
       },
       {
-        "asset": "Equity (Value)",
-        "ticker": "Bancos & Utilities",
+        "asset": "Dividendos",
+        "ticker": "Ações Perenes",
         "allocation": "20%",
-        "rationale": "Empresas descontadas com P/L baixo e alto dividend yield."
-      },
-      {
-        "asset": "Liquidez",
-        "ticker": "Caixa / CDI",
-        "allocation": "10%",
-        "rationale": "Reserva estratégica para oportunidades de mercado."
+        "rationale": "Sócios de grandes bancos e empresas de energia."
       }
     ]
   },
   "tech": [
     {
       "id": 1,
-      "title": "Thimanni Management System",
-      "category": "Fintech / SaaS",
-      "stack": ["JavaScript ES6", "Firebase", "Analytics"],
-      "details": "Plataforma de gestão financeira para profissionais liberais. Inclui automação de cobranças recorrentes e dashboard de inadimplência.",
-      "hook": "Automação de Recebíveis"
+      "title": "Sistema de Gestão de Recebíveis (SaaS)",
+      "category": "Fintech / Solução PJ",
+      "stack": ["JavaScript", "Firebase", "Automação"],
+      "details": "Muitos autônomos quebram por falta de gestão de caixa. Desenvolvi um sistema que centraliza o cadastro de clientes e monitora pagamentos, reduzindo a inadimplência através da organização visual.",
+      "hook": "Gestão de Fluxo de Caixa"
     },
     {
       "id": 2,
-      "title": "Credit Risk Simulator",
-      "category": "Algoritmo Financeiro",
-      "stack": ["Python", "Pandas", "Math Logic"],
-      "details": "Algoritmo para simulação de cenários de crédito e amortização de dívidas, considerando variáveis macroeconômicas (Selic/IPCA).",
-      "hook": "Análise de Risco"
+      "title": "Dashboard de Inteligência Comercial (BI)",
+      "category": "Business Intelligence",
+      "stack": ["Data Analysis", "KPIs", "CRM Logic"],
+      "details": "Vender sem dados é sorte. Na Nexus, implementei um painel que rastreia a origem dos leads, calculando o custo real de cada cliente (CAC), fundamental para qualquer agência bancária bater metas.",
+      "hook": "Decisão Baseada em Dados"
     },
     {
       "id": 3,
-      "title": "Nexus BI Dashboard",
-      "category": "Business Intelligence",
-      "stack": ["Data Viz", "CRM Logic", "Automation"],
-      "details": "Painel de inteligência comercial para acompanhamento de funil de vendas, CAC e LTV em tempo real.",
-      "hook": "Eficiência Operacional"
+      "title": "Simulador de Crédito Bancário",
+      "category": "Algoritmo de Vendas",
+      "stack": ["Matemática Financeira", "Lógica de Vendas"],
+      "details": "Algoritmo desenvolvido para comparar o Custo Efetivo Total (CET) de financiamentos versus a taxa administrativa de consórcios. Uma ferramenta de venda consultiva.",
+      "hook": "Consultoria Automatizada"
     }
   ]
 }
